@@ -1,26 +1,27 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Colores personalizados */
+  --color-primary: #295788fc;
+  --color-primary-light: #eff6ff ;
+  --color-primary-dark: #be185d;
+  --color-secondary: #e50076;
+  
+  /* Fuentes personalizadas */
+  --font-family-poppins: Poppins, sans-serif;
+  --font-family-glass-antigua: "Glass Antiqua", cursive;
+  --font-family-cocotte: Cocotte, sans-serif;
+   --font-family-helvetica: Helvetica, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(to right, #ec48e4, #ee6706);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* Leaflet CSS (si usas mapas) */
+@import 'leaflet/dist/leaflet.css';
