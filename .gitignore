@@ -39,3 +39,64 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ===== AÑADIDOS PARA LA IGUALITARIA =====
+
+# Claude Code (settings locales - NO commitear)
+.claude/settings.local.json
+
+# IDE - Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# IDE - JetBrains (WebStorm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# IDE - Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# OS - macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# OS - Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+
+# OS - Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+
+# Testing
+.nyc_output/
+playwright-report/
+test-results/
+
+# Optional - Lockfiles (descomentar si usas solo npm)
+# yarn.lock
+# pnpm-lock.yaml
