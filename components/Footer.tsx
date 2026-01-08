@@ -29,7 +29,11 @@ const Footer = () => {
     <>
       {/* Wave decorativa */}
       <div className="flex -mb-1">
-        <img className="w-screen h-32" src="/waveBottom2.png" alt="Decoració ona" />
+        <img
+          className="w-screen h-32"
+          src="/waveBottom2.png"
+          alt="Decoració ona"
+        />
       </div>
 
       <footer>
@@ -37,7 +41,6 @@ const Footer = () => {
         <section className="bg-pink-600 text-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-6 py-12">
             <div className="flex flex-col items-center justify-between sm:flex-row py-14 px-10 gap-6 sm:gap-2">
-
               {/* Logo y descripción */}
               <div className="space-y-4 xl:col-span-1">
                 <img
@@ -165,8 +168,11 @@ const Footer = () => {
               </Link>
             </div>
             <div className="mx-auto pt-3">
-              <p className="text-base text-white/75 text-center" suppressHydrationWarning>
-                &copy; {new Date().getFullYear()} La Igualitària. Tots els drets reservats.
+              <p
+                className="text-base text-white/75 text-center"
+                suppressHydrationWarning
+              >
+                &copy; 2026 La Igualitària. Tots els drets reservats.
               </p>
             </div>
           </div>

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, Tooltip } from "react-leaflet";
-import type { ProviderShape } from "../lib/wp";
+import type { ProviderShape } from "../types/wordpress";
 import { Spinner } from "./ui/Spinner";
 import Link from "next/link";
 
@@ -50,6 +50,7 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
   // Geocodificar ubicaciones cuando cambian los proveedores
   useEffect(() => {
     if (providers.length === 0) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setMarkerData([]);
       return;
     }
@@ -122,7 +123,7 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
               </Tooltip>
               <Popup>
                 <Link
-                  to={`/proveidors/${marker.title
+                  href={`/proveidors/${marker.title
                     .toLowerCase()
                     .replace(/\s+/g, "-")}`}
                   className="text-sm space-y-1"
@@ -138,13 +139,13 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
         <div className="font-bold text-lg mb-2">Ets Proveidor?</div>
         <p>
           Si ets productor i estàs interessat en formar part de la nostra xarxa,
-          contacta'ns!
+          contacta&apos;ns!
         </p>
         <a
           className="bg-primary text-white px-4 py-3 my-4 rounded-md "
           href="mailto:laigualitaria@cooperasec.org"
         >
-          Contacta'ns
+          Contacta&apos;ns
         </a>
       </section>
     </div>

@@ -1,4 +1,4 @@
-
+'use cache'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { PostListItem, PostDetail } from '@/types/wordpress';
 
