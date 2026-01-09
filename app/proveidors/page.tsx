@@ -4,7 +4,6 @@ import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { Search } from "lucide-react";
 import { getProviders } from "@/lib/wp";
-import { MapSection } from "@/components/MapSection";
 
 export default function Proveidors() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -211,8 +210,7 @@ export default function Proveidors() {
           </div>
         )}
       </div>
-      {/* Map Section */}
-      <MapSection providers={filteredProviders} />
+
       {/* CTA */}
       <section className="flex flex-col items-center bg-gray-50 p-6 rounded-lg text-center mx-auto max-w-7xl mb-16">
         <div className="font-bold text-lg mb-2">Ets Proveïdor?</div>
