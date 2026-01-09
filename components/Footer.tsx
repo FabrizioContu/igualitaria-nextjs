@@ -20,7 +20,7 @@ const SCHEDULE = [
 
 const SOCIAL_LINKS = {
   facebook: "#",
-  instagram: "#",
+  instagram: "https://www.instagram.com/laigualitaria_economatcoop",
   whatsapp: `https://api.whatsapp.com/send?phone=${CONTACT_INFO.whatsapp}`,
 } as const;
 
@@ -61,6 +61,7 @@ const Footer = () => {
                     href={SOCIAL_LINKS.facebook}
                     className="text-white/80 hover:text-white transition-colors"
                     aria-label="Facebook"
+                    target="_blank"
                   >
                     <svg
                       className="h-6 w-6"
@@ -77,6 +78,7 @@ const Footer = () => {
                     href={SOCIAL_LINKS.instagram}
                     className="text-white/80 hover:text-white transition-colors"
                     aria-label="Instagram"
+                    target="_blank"
                   >
                     <svg
                       className="h-6 w-6"

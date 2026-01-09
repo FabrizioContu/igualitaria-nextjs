@@ -135,19 +135,6 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
           ))}
         </MapContainer>
       )}
-      <section className="flex flex-col items-center bg-gray-50 p-6 rounded-lg text-center">
-        <div className="font-bold text-lg mb-2">Ets Proveidor?</div>
-        <p>
-          Si ets productor i estàs interessat en formar part de la nostra xarxa,
-          contacta&apos;ns!
-        </p>
-        <a
-          className="bg-primary text-white px-4 py-3 my-4 rounded-md "
-          href="mailto:laigualitaria@cooperasec.org"
-        >
-          Contacta&apos;ns
-        </a>
-      </section>
     </div>
   );
 };
