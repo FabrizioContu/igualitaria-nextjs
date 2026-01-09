@@ -20,7 +20,7 @@ const SCHEDULE = [
 ] as const;
 
 const SOCIAL_LINKS = {
-  facebook: "#",
+  telegram: "t.me/laigualitaria",
   instagram: "https://www.instagram.com/laigualitaria_economatcoop",
   whatsapp: `https://api.whatsapp.com/send?phone=${CONTACT_INFO.whatsapp}`,
 } as const;
@@ -29,13 +29,13 @@ const Footer = () => {
   return (
     <>
       {/* Wave decorativa */}
-      <div className="flex -mb-1 w-full">
+      <div className="flex w-full">
         <Image
           src="/waveBottom2.png"
           alt="Decoració ona"
           width={1920}
           height={128}
-          className="w-full h-32 object-cover"
+          className="w-full h-full object-cover"
           priority
         />
       </div>
@@ -62,27 +62,29 @@ const Footer = () => {
 
                 {/* Redes sociales */}
                 <div className="flex space-x-6">
-                  {/* Facebook */}
+                  {/* Telegram */}
                   <a
-                    href={SOCIAL_LINKS.facebook}
-                    className="text-white/80 hover:text-white transition-colors"
-                    aria-label="Facebook"
+                    href={SOCIAL_LINKS.telegram}
+                    className="text-white/80 hover:text-white hover:scale-110 transition-colors"
+                    aria-label="Telegram"
                     target="_blank"
                   >
                     <svg
-                      className="h-6 w-6"
                       fill="currentColor"
-                      viewBox="0 0 24 24"
+                      className="h-6 w-6"
+                      viewBox="0 0 32 32"
                       aria-hidden="true"
+                      version="1.1"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                      <path d="M22.122 10.040c0.006-0 0.014-0 0.022-0 0.209 0 0.403 0.065 0.562 0.177l-0.003-0.002c0.116 0.101 0.194 0.243 0.213 0.403l0 0.003c0.020 0.122 0.031 0.262 0.031 0.405 0 0.065-0.002 0.129-0.007 0.193l0-0.009c-0.225 2.369-1.201 8.114-1.697 10.766-0.21 1.123-0.623 1.499-1.023 1.535-0.869 0.081-1.529-0.574-2.371-1.126-1.318-0.865-2.063-1.403-3.342-2.246-1.479-0.973-0.52-1.51 0.322-2.384 0.221-0.23 4.052-3.715 4.127-4.031 0.004-0.019 0.006-0.040 0.006-0.062 0-0.078-0.029-0.149-0.076-0.203l0 0c-0.052-0.034-0.117-0.053-0.185-0.053-0.045 0-0.088 0.009-0.128 0.024l0.002-0.001q-0.198 0.045-6.316 4.174c-0.445 0.351-1.007 0.573-1.619 0.599l-0.006 0c-0.867-0.105-1.654-0.298-2.401-0.573l0.074 0.024c-0.938-0.306-1.683-0.467-1.619-0.985q0.051-0.404 1.114-0.827 6.548-2.853 8.733-3.761c1.607-0.853 3.47-1.555 5.429-2.010l0.157-0.031zM15.93 1.025c-8.302 0.020-15.025 6.755-15.025 15.060 0 8.317 6.742 15.060 15.060 15.060s15.060-6.742 15.060-15.060c0-8.305-6.723-15.040-15.023-15.060h-0.002q-0.035-0-0.070 0z"></path>{" "}
                     </svg>
                   </a>
 
                   {/* Instagram */}
                   <a
                     href={SOCIAL_LINKS.instagram}
-                    className="text-white/80 hover:text-white transition-colors"
+                    className="text-white/80 hover:text-white  hover:scale-110  transition-colors"
                     aria-label="Instagram"
                     target="_blank"
                   >
@@ -101,7 +103,7 @@ const Footer = () => {
                     href={SOCIAL_LINKS.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/80 hover:text-white transition-colors"
+                    className="text-white/80 hover:text-white  hover:scale-110  transition-colors"
                     aria-label="WhatsApp"
                   >
                     <svg
