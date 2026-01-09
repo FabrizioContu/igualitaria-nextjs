@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { Search } from "lucide-react";
 import { getProviders } from "@/lib/wp";
+import Image from "next/image";
 
 export default function Proveidors() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -163,7 +164,7 @@ export default function Proveidors() {
                     {/* Imagen */}
                     <div className="h-48 overflow-hidden bg-gray-200">
                       {provider.featuredImage ? (
-                        <img
+                        <Image
                           src={provider.featuredImage}
                           alt={provider.featuredAlt ?? provider.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

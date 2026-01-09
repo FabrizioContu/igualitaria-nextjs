@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export const metadata = {
   title: "Fes-te Sòcia - La Igualitària",
 };
@@ -9,7 +11,14 @@ export default function FesteSoci() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white">
             <div className="pb-8">
-              <img src="/header-2.svg" alt="" />
+              <Image
+                src="/header-2.svg"
+                alt="imatge de la botiga"
+                width={800}
+                height={300}
+                priority
+                className="mx-auto"
+              />
             </div>
             <h1 className=" text-7xl lg:px-28">
               <span className="">Suma&apos;t al consum que canvia el món!</span>
@@ -108,7 +117,12 @@ export default function FesteSoci() {
             Fes-te sòcia
           </a>
           <div className="mt-20 flex justify-center">
-            <img src="/fruites.png" alt="imagen fruta" />
+            <Image
+              src="/fruites.png"
+              alt="imagen fruta"
+              width={400}
+              height={300}
+            />
           </div>
         </div>
       </div>

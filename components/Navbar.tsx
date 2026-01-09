@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
@@ -33,16 +34,22 @@ const Navbar = () => {
               className="flex items-center gap-3"
               aria-label="La Igualitària - Pàgina d'inici"
             >
-              <img
+              <Image
                 src="/logoCircle.webp"
                 alt="Logotip de La Igualitària"
-                className="h-20"
+                width={80}
+                height={80}
+                className="h-20 w-auto"
+                priority
               />
 
-              <img
+              <Image
                 src="/laIgualitariaTextBlanc.webp"
                 alt="Logotip de La Igualitària"
-                className="h-12"
+                width={150}
+                height={48}
+                className="h-12 w-auto"
+                priority
               />
             </Link>
           </div>

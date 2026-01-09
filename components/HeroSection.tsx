@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export const HeroSection = ({
   title,
   content,
@@ -24,10 +26,13 @@ export const HeroSection = ({
         </div>
       </div>
       <div className=" lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <img
-          className=" lg:w-auto h-full ratio-16/9 object-cover"
+        <Image
           src="/heroImage3.png"
           alt="La Igualitària"
+          width={800}
+          height={600}
+          className=" lg:w-auto h-full object-cover"
+          priority
         />
       </div>
     </section>

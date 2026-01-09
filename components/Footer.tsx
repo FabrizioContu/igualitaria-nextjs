@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import Map from "../components/Map";
 
 // Constantes
@@ -28,11 +29,14 @@ const Footer = () => {
   return (
     <>
       {/* Wave decorativa */}
-      <div className="flex -mb-1">
-        <img
-          className="w-screen h-32"
+      <div className="flex -mb-1 w-full">
+        <Image
           src="/waveBottom2.png"
           alt="Decoració ona"
+          width={1920}
+          height={128}
+          className="w-full h-32 object-cover"
+          priority
         />
       </div>
 
@@ -43,9 +47,11 @@ const Footer = () => {
             <div className="flex flex-col items-center justify-between sm:flex-row py-14 px-10 gap-6 sm:gap-2">
               {/* Logo y descripción */}
               <div className="space-y-4 xl:col-span-1">
-                <img
+                <Image
                   src="/LogoBillet.webp"
                   alt="La Igualitària"
+                  width={128}
+                  height={128}
                   className="h-32 w-auto mb-4"
                 />
                 <p className="text-white/90 max-w-xs">
@@ -149,23 +155,27 @@ const Footer = () => {
         </section>
 
         {/* Sección inferior con logos */}
-        <section className="bg-gradient-to-t from-pink-800 to-pink-600">
+        <section className="bg-linear-to-t from-pink-800 to-pink-600">
           <div className="py-5 space-y-5">
             <div className="flex justify-center">
               <Link href="/" aria-label="Som la Clau">
-                <img
-                  className="h-12 rounded-lg"
+                <Image
                   src="/somLaClau.webp"
                   alt="Logo Som la Clau"
+                  width={200}
+                  height={48}
+                  className="h-12 w-auto rounded-lg"
                 />
               </Link>
             </div>
             <div className="flex justify-center">
               <Link href="/" aria-label="Logos col·laboradors">
-                <img
-                  className="h-12 rounded-lg bg-white p-1"
+                <Image
                   src="/logos_peu.webp"
                   alt="Logos col·laboradors"
+                  width={200}
+                  height={48}
+                  className="h-12 w-auto rounded-lg bg-white p-1"
                 />
               </Link>
             </div>
