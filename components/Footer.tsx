@@ -183,10 +183,24 @@ const Footer = () => {
             </div>
             <div className="mx-auto pt-3">
               <p
-                className="text-base text-white/75 text-center"
+                className="text-base text-white/85 text-center"
                 suppressHydrationWarning
               >
                 &copy; 2026 La Igualitària. Tots els drets reservats.
+              </p>
+            </div>
+            <div className="mx-auto pt-1">
+              <p className="text-sm text-white/80 text-center">
+                Desenvolupat per{" "}
+                <a
+                  href="https://fabriziocontu.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-white transition"
+                  aria-label="Web desenvolupada per FabriDev"
+                >
+                  FabriDev
+                </a>
               </p>
             </div>
           </div>
