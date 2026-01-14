@@ -20,7 +20,7 @@ const SCHEDULE = [
 ] as const;
 
 const SOCIAL_LINKS = {
-  telegram: "t.me/laigualitaria",
+  telegram: "https://t.me/laigualitaria",
   instagram: "https://www.instagram.com/laigualitaria_economatcoop",
   whatsapp: `https://api.whatsapp.com/send?phone=${CONTACT_INFO.whatsapp}`,
 } as const;
