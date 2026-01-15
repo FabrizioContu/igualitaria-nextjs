@@ -86,7 +86,7 @@ logs/
 *.log
 
 # Temporary files
-*.tmpclaude-*
+*.tmpclaude-
 *.tmp
 *.temp
 *.swp
