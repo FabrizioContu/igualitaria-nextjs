@@ -5,7 +5,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://laigualitaria.coop';
 
   // Obtener posts de WordPress
-  const posts = await getLatestPost({ perPage: 100 });
+  const posts = await getLatestPost({ perPage: 50 });
 
   // Obtener proveedores de WordPress
   const providers = await getProviders();
