@@ -14,8 +14,8 @@ const CONTACT_INFO = {
 } as const;
 
 const SCHEDULE = [
-  { days: "Dilluns-Divendres", hours: "10:00 - 14:00 / 16:00 - 20:30" },
-  { days: "Dissabte", hours: "10:00 - 14:00" },
+  { days: "Dilluns-Divendres", hours: "10:00-14:00 / 16:00-20:30" },
+  { days: "Dissabte", hours: "10:00-14:00" },
   { days: "Diumenge", hours: "Tancat" },
 ] as const;
 
@@ -44,7 +44,7 @@ const Footer = () => {
         {/* Sección principal */}
         <section className="bg-pink-600 text-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-6 py-12">
-            <div className="flex flex-col items-center justify-between sm:flex-row py-14 px-10 gap-6 sm:gap-2">
+            <div className="flex flex-col items-center justify-between sm:flex-row py-14 px-6 gap-6 sm:gap-2">
               {/* Logo y descripción */}
               <div className="space-y-4 xl:col-span-1">
                 <Image
@@ -52,16 +52,16 @@ const Footer = () => {
                   alt="La Igualitària"
                   width={128}
                   height={128}
-                  className="h-32 w-auto mb-4"
+                  className="h-48 w-auto mb-4 mx-auto sm:mx-0"
                 />
-                <p className="text-white/90 max-w-xs">
+                <p className="text-white text-lg max-w-xs text-pretty">
                   Cooperativa de consum autogestionada i participativa que
                   ofereix productes de proximitat, de temporada i agroecològics
                   al veïnat del Poble-sec.
                 </p>
 
                 {/* Redes sociales */}
-                <div className="flex space-x-6">
+                <div className="flex space-x-6 justify-center sm:justify-start py-2">
                   {/* Telegram */}
                   <a
                     href={SOCIAL_LINKS.telegram}
@@ -119,7 +119,7 @@ const Footer = () => {
               </div>
 
               {/* Mapa */}
-              <section className="rounded-lg overflow-hidden shadow-md h-80 w-80">
+              <section className="rounded-lg overflow-hidden shadow-md h-80 w-80 my-3">
                 <Map />
               </section>
 
@@ -127,25 +127,25 @@ const Footer = () => {
               <div>
                 {/* Contacto */}
                 <div className="mb-8">
-                  <h3 className="text-sm font-bold uppercase tracking-wider">
+                  <h3 className="text-lg font-bold uppercase tracking-wider">
                     Contacte
                   </h3>
                   <ul className="mt-3 space-y-1">
-                    <li className="text-base">{CONTACT_INFO.address}</li>
-                    <li className="text-base">{CONTACT_INFO.city}</li>
-                    <li className="text-base">{CONTACT_INFO.email}</li>
-                    <li className="text-base">{CONTACT_INFO.phone}</li>
+                    <li className="text-lg">{CONTACT_INFO.address}</li>
+                    <li className="text-lg">{CONTACT_INFO.city}</li>
+                    <li className="text-lg">{CONTACT_INFO.email}</li>
+                    <li className="text-lg">{CONTACT_INFO.phone}</li>
                   </ul>
                 </div>
 
                 {/* Horarios */}
                 <div>
-                  <h3 className="text-sm font-bold uppercase tracking-wider">
+                  <h3 className="text-lg font-bold uppercase tracking-wider">
                     Horaris
                   </h3>
                   <ul className="mt-3 space-y-1">
                     {SCHEDULE.map((item, index) => (
-                      <li key={index} className="text-base">
+                      <li key={index} className="text-lg">
                         {item.days}: {item.hours}
                       </li>
                     ))}
@@ -170,7 +170,7 @@ const Footer = () => {
                 />
               </Link>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center px-3">
               <Link href="/" aria-label="Logos col·laboradors">
                 <Image
                   src="/logos_peu.webp"
