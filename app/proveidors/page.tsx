@@ -5,7 +5,12 @@ import Link from "next/link";
 import { Search } from "lucide-react";
 import { getProviders } from "@/lib/wp";
 import Image from "next/image";
-import { MapSection } from "@/components/MapSection";
+import dynamic from "next/dynamic";
+
+const MapSection = dynamic(() => import("@/components/MapSection").then((m) => m.MapSection), {
+  ssr: false,
+  loading: () => <div className="h-96 bg-gray-100 rounded-lg animate-pulse" />,
+});
 
 export default function Proveidors() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
