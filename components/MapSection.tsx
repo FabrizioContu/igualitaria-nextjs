@@ -1,15 +1,25 @@
 "use client";
+import "leaflet/dist/leaflet.css";
 import { useMemo } from "react";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  Tooltip,
-  Circle,
-} from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Circle, Popup } from "react-leaflet";
+import L from "leaflet";
 import type { ProviderShape } from "../types/wordpress";
 import Link from "next/link";
+import markerIcon from "../public/fruites.png";
+import tiendaIcon from "../public/logoCircle.webp";
+
+const pinIcon = L.icon({
+  iconUrl: markerIcon.src,
+  iconSize: [25, 25],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+});
+const igualitariaIcon = L.icon({
+  iconUrl: tiendaIcon.src,
+  iconSize: [35, 30],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+});
 
 interface MarkerData {
   id: number;
@@ -26,7 +36,7 @@ interface MapSectionProps {
 }
 
 export const MapSection = ({ providers = [] }: MapSectionProps) => {
-  const limeOptions = { color: "green" };
+  const purpleOptions = { color: "#e50076" };
   const markerData = useMemo<MarkerData[]>(() => {
     return providers
       .filter((p) => {
@@ -48,13 +58,9 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-3xl font-bold mb-2">
-          Localització dels Proveïdors
+        <h2 className="text-3xl font-bold mb-2 text-center pb-14">
+          Tots els nostres proveïdors a menys de un radi de 200Km
         </h2>
-        <p className="text-gray-600">
-          Descobreix on es troben els nostres proveïdors a Barcelona i arreu.
-          Tots els nostres proveïdors a menys de un radi de 200Km.
-        </p>
       </div>
 
       {markerData.length === 0 ? (
@@ -69,29 +75,36 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
         >
           <Circle
             center={[41.8743703, 1.9574336]}
-            pathOptions={limeOptions}
-            radius={90000}
+            pathOptions={purpleOptions}
+            radius={101000}
+            fillOpacity={0.2}
           />
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; OpenStreetMap contributors"
           />
           {markerData.map((marker) => (
-            <Marker key={marker.id} position={[marker.lat, marker.lng]}>
-              <Tooltip className="">
-                <p className="font-semibold">{marker.title}</p>
-                <p>{marker.ubicacio}</p>
-                <p>{marker.tipus}</p>
-              </Tooltip>
-              <Popup>
-                <Link
-                  href={`/proveidors/${marker.slug}`}
-                  className="text-sm space-y-1"
-                >
-                  <p className="font-bold text-primary">{marker.title}</p>
-                </Link>
-              </Popup>
-            </Marker>
+            <>
+              <Marker
+                key={marker.id}
+                icon={pinIcon}
+                position={[marker.lat, marker.lng]}
+              >
+                <Popup>
+                  <Link
+                    href={`/proveidors/${marker.slug}`}
+                    className="text-sm space-y-1"
+                  >
+                    <p className="font-bold text-primary">{marker.title}</p>
+                  </Link>
+                </Popup>
+              </Marker>
+              <Marker icon={igualitariaIcon} position={[41.3743703, 2.1574336]}>
+                <Popup>
+                  <p className="font-bold text-primary">La Igualitaria</p>
+                </Popup>
+              </Marker>
+            </>
           ))}
         </MapContainer>
       )}
