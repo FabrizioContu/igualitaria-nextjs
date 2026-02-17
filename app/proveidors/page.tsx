@@ -1,6 +1,5 @@
 "use client";
 
-import "leaflet/dist/leaflet.css";
 import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { Search } from "lucide-react";
@@ -169,12 +168,13 @@ export default function Proveidors() {
                 >
                   <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                     {/* Imagen */}
-                    <div className="h-48 overflow-hidden bg-gray-200">
+                    <div className="relative h-48 overflow-hidden bg-gray-200">
                       {provider.featuredImage ? (
                         <Image
                           src={provider.featuredImage}
                           alt={provider.featuredAlt ?? provider.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-gray-400">
