@@ -43,7 +43,7 @@ export const mockWpProvider = {
     ubicacion: 'Barcelona',
     web: 'https://example.com',
     email: 'test@example.com',
-    telefon: '123456789',
+    telefono: '123456789',
   },
   _embedded: {
     'wp:featuredmedia': [

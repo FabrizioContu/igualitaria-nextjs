@@ -49,7 +49,7 @@ export type ProviderShape = {
   slug: string;
   title: string;
   content: string;
- 
+  excerpt: string;
   featuredImage: string | null;
   featuredAlt?: string | null;
   acf?: {
@@ -57,9 +57,10 @@ export type ProviderShape = {
     ubicacion?: string;
     web?: string;
     email?: string;
-    telefon?: string;
+    telefono?: string;
     descripcion?: string;
     excerpt?: string;
-  
+    latitud?: string;
+    longitud?: string;
   };
 };

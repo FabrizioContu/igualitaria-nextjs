@@ -1,9 +1,11 @@
 "use client";
 
+import "leaflet/dist/leaflet.css";
 import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { Search } from "lucide-react";
 import { getProviders } from "@/lib/wp";
+import type { ProviderShape } from "@/types/wordpress";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
@@ -13,8 +15,7 @@ const MapSection = dynamic(() => import("@/components/MapSection").then((m) => m
 });
 
 export default function Proveidors() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [providers, setProviders] = useState<any[]>([]);
+  const [providers, setProviders] = useState<ProviderShape[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -203,7 +204,7 @@ export default function Proveidors() {
                       </div>
 
                       <p className="text-gray-600 text-sm line-clamp-3 mb-4">
-                        <span dangerouslySetInnerHTML={{ __html: excerpt }} />
+                        <span dangerouslySetInnerHTML={{ __html: excerpt ?? "" }} />
                       </p>
 
                       <div className="text-primary font-medium group-hover:underline">

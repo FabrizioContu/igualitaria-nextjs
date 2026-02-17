@@ -1,6 +1,6 @@
 'use cache'
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { PostListItem, PostDetail } from '@/types/wordpress';
+import type { PostListItem, PostDetail, ProviderShape } from '@/types/wordpress';
 
 const domain = process.env.NEXT_PUBLIC_WP_DOMAIN ?? '';
 if (!domain) throw new Error('NEXT_PUBLIC_WP_DOMAIN no definida en .env.local');
@@ -105,7 +105,7 @@ export const getAllPostSlugs = async (): Promise<string[]> => {
 
 
 // Providers
-function normalizeProvider(p: any): any {
+function normalizeProvider(p: any): ProviderShape {
   const embedded = p?._embedded;
   const media = embedded?.['wp:featuredmedia']?.[0];
   const featuredImage = media?.source_url ?? null;
@@ -123,13 +123,13 @@ function normalizeProvider(p: any): any {
   };
 }
 
-export const getProviders = async (perPage = 100): Promise<any[]> => {
+export const getProviders = async (perPage = 100): Promise<ProviderShape[]> => {
   const url = `${API_URL}/proveedores?per_page=${perPage}&_embed`;
   const results = await fetchJSON(url);
   return (results as any[]).map(normalizeProvider);
 };
 
-export const getProviderBySlug = async (slug: string): Promise<any | null> => {
+export const getProviderBySlug = async (slug: string): Promise<ProviderShape | null> => {
   const url = `${API_URL}/proveedores?slug=${encodeURIComponent(slug)}&_embed`;
   const results = await fetchJSON(url);
   const p = results[0];
