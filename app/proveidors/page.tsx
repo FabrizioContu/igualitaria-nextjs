@@ -5,6 +5,12 @@ import Link from "next/link";
 import { Search } from "lucide-react";
 import { getProviders } from "@/lib/wp";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const MapSection = dynamic(() => import("@/components/MapSection").then((m) => m.MapSection), {
+  ssr: false,
+  loading: () => <div className="h-96 bg-gray-100 rounded-lg animate-pulse" />,
+});
 
 export default function Proveidors() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -211,7 +217,10 @@ export default function Proveidors() {
           </div>
         )}
       </div>
-
+      {/* Maps Section */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
+        <MapSection providers={filteredProviders} />
+      </section>
       {/* CTA */}
       <section className="flex flex-col items-center bg-gray-50 p-6 rounded-lg text-center mx-auto max-w-7xl mb-16">
         <div className="font-bold text-lg mb-2">Ets Proveïdor?</div>

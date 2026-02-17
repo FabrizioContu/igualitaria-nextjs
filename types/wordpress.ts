@@ -54,7 +54,7 @@ export type ProviderShape = {
   featuredAlt?: string | null;
   acf?: {
     tipus?: string;
-    ubicacio?: string;
+    ubicacion?: string;
     web?: string;
     email?: string;
     telefon?: string;

@@ -20,14 +20,14 @@ interface MapSectionProps {
 
 // Geocoding con Nominatim (gratuito, sin API key)
 async function geocodeLocation(
-  location: string
+  location: string,
 ): Promise<{ lat: number; lng: number } | null> {
   if (!location) return null;
   try {
     const response = await fetch(
       `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
-        location + ", Spain"
-      )}`
+        location + ", Spain",
+      )}`,
     );
     if (!response.ok) return null;
     const data = await response.json();
@@ -59,7 +59,7 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
     const geocodeAll = async () => {
       const results = await Promise.all(
         providers.map(async (p) => {
-          const ubicacio = p.acf?.ubicacio ?? "";
+          const ubicacio = p.acf?.ubicacion ?? "";
           const coords = await geocodeLocation(ubicacio);
           return {
             id: p.id,
@@ -69,7 +69,7 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
             lng: coords?.lng ?? defaultCenter[1],
             tipus: p.acf?.tipus ?? "",
           };
-        })
+        }),
       );
       setMarkerData(results);
       setLoading(false);
