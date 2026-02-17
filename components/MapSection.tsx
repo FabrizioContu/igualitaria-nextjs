@@ -1,13 +1,13 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { MapContainer, TileLayer, Marker, Popup, Tooltip } from "react-leaflet";
 import type { ProviderShape } from "../types/wordpress";
-import { Spinner } from "./ui/Spinner";
 import Link from "next/link";
 
 interface MarkerData {
   id: number;
   title: string;
+  slug: string;
   ubicacio: string;
   lat: number;
   lng: number;
@@ -18,76 +18,24 @@ interface MapSectionProps {
   providers?: ProviderShape[];
 }
 
-// Geocoding con Nominatim (gratuito, sin API key)
-async function geocodeLocation(
-  location: string,
-): Promise<{ lat: number; lng: number } | null> {
-  if (!location) return null;
-  try {
-    const response = await fetch(
-      `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
-        location + ", Spain",
-      )}`,
-    );
-    if (!response.ok) return null;
-    const data = await response.json();
-    if (data.length === 0) return null;
-    return {
-      lat: parseFloat(data[0].lat),
-      lng: parseFloat(data[0].lon),
-    };
-  } catch (error) {
-    console.error(`Error geocoding ${location}:`, error);
-    return null;
-  }
-}
-
 export const MapSection = ({ providers = [] }: MapSectionProps) => {
-  const defaultCenter = useMemo(() => [41.3746, 2.1619] as const, []);
-  const [markerData, setMarkerData] = useState<MarkerData[]>([]);
-  const [loading, setLoading] = useState(false);
-
-  // Geocodificar ubicaciones cuando cambian los proveedores
-  useEffect(() => {
-    if (providers.length === 0) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setMarkerData([]);
-      return;
-    }
-
-    setLoading(true);
-    const geocodeAll = async () => {
-      const results = await Promise.all(
-        providers.map(async (p) => {
-          const ubicacio = p.acf?.ubicacion ?? "";
-          const coords = await geocodeLocation(ubicacio);
-          return {
-            id: p.id,
-            title: p.title,
-            ubicacio,
-            lat: coords?.lat ?? defaultCenter[0],
-            lng: coords?.lng ?? defaultCenter[1],
-            tipus: p.acf?.tipus ?? "",
-          };
-        }),
-      );
-      setMarkerData(results);
-      setLoading(false);
-    };
-
-    geocodeAll();
-  }, [defaultCenter, providers]);
-
-  if (loading) {
-    return (
-      <div className="space-y-8">
-        <h2 className="text-3xl font-bold">Localització dels Proveïdors</h2>
-        <div>
-          <Spinner />
-        </div>
-      </div>
-    );
-  }
+  const markerData = useMemo<MarkerData[]>(() => {
+    return providers
+      .filter((p) => {
+        const lat = parseFloat(p.acf?.latitud ?? "");
+        const lng = parseFloat(p.acf?.longitud ?? "");
+        return !isNaN(lat) && !isNaN(lng);
+      })
+      .map((p) => ({
+        id: p.id,
+        title: p.title,
+        slug: p.slug,
+        ubicacio: p.acf?.ubicacion ?? "",
+        lat: parseFloat(p.acf?.latitud ?? "0"),
+        lng: parseFloat(p.acf?.longitud ?? "0"),
+        tipus: p.acf?.tipus ?? "",
+      }));
+  }, [providers]);
 
   return (
     <div className="space-y-8">
@@ -123,9 +71,7 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
               </Tooltip>
               <Popup>
                 <Link
-                  href={`/proveidors/${marker.title
-                    .toLowerCase()
-                    .replace(/\s+/g, "-")}`}
+                  href={`/proveidors/${marker.slug}`}
                   className="text-sm space-y-1"
                 >
                   <p className="font-bold text-primary">{marker.title}</p>
