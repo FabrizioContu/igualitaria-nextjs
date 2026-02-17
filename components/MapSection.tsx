@@ -1,6 +1,13 @@
 "use client";
 import { useMemo } from "react";
-import { MapContainer, TileLayer, Marker, Popup, Tooltip } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Tooltip,
+  Circle,
+} from "react-leaflet";
 import type { ProviderShape } from "../types/wordpress";
 import Link from "next/link";
 
@@ -19,6 +26,7 @@ interface MapSectionProps {
 }
 
 export const MapSection = ({ providers = [] }: MapSectionProps) => {
+  const limeOptions = { color: "green" };
   const markerData = useMemo<MarkerData[]>(() => {
     return providers
       .filter((p) => {
@@ -45,6 +53,7 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
         </h2>
         <p className="text-gray-600">
           Descobreix on es troben els nostres proveïdors a Barcelona i arreu.
+          Tots els nostres proveïdors a menys de un radi de 200Km.
         </p>
       </div>
 
@@ -58,6 +67,11 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
           zoom={8}
           className="h-96 rounded-lg border border-gray-300 z-0"
         >
+          <Circle
+            center={[41.8743703, 1.9574336]}
+            pathOptions={limeOptions}
+            radius={90000}
+          />
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; OpenStreetMap contributors"
