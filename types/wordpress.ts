@@ -44,6 +44,19 @@ export type PostDetail = {
 };
 
 
+export type EventShape = {
+  id: number;
+  slug: string;
+  title: string;
+  acf: {
+    fecha_evento?: string;
+    hora_inicio?: string;
+    hora_fin?: string;
+    ubicacion_evento?: string;
+    descripcion_corta?: string;
+  };
+};
+
 export type ProviderShape = {
   id: number;
   slug: string;

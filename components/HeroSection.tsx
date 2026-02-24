@@ -25,13 +25,13 @@ export const HeroSection = ({
           </div>
         </div>
       </div>
-      <div className=" lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+      <div className=" lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 pb-5 md:py-32">
         <Image
-          src="/heroImage3.png"
-          alt="La Igualitària"
+          src="/Panoramica.webp"
+          alt="Foto de La Igualitària"
           width={800}
           height={600}
-          className=" lg:w-auto h-full object-cover"
+          className=" lg:w-auto h-full object-cover  rounded-md shadow-lg"
           priority
         />
       </div>
