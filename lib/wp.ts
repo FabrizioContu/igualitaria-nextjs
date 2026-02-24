@@ -1,6 +1,6 @@
 'use cache'
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { PostListItem, PostDetail, ProviderShape } from '@/types/wordpress';
+import type { PostListItem, PostDetail, ProviderShape, EventShape } from '@/types/wordpress';
 
 const domain = process.env.NEXT_PUBLIC_WP_DOMAIN ?? '';
 if (!domain) throw new Error('NEXT_PUBLIC_WP_DOMAIN no definida en .env.local');
@@ -142,4 +142,36 @@ export const getAllProviderSlugs = async (): Promise<string[]> => {
     `${API_URL}/proveedores?per_page=100&_fields=slug`
   );
   return providers.map((provider: any) => provider.slug);
+};
+
+
+// Events
+function normalizeEvent(e: any): EventShape {
+  return {
+    id: e.id,
+    slug: e.slug,
+    title: e.title?.rendered ?? '',
+    acf: e.acf ?? {},
+  };
+}
+
+export const getEvents = async (perPage = 100): Promise<EventShape[]> => {
+  const url = `${API_URL}/eventos?per_page=${perPage}&orderby=meta_value&meta_key=data_event&order=asc`;
+  const results = await fetchJSON(url);
+  return (results as any[]).map(normalizeEvent);
+};
+
+export const getEventBySlug = async (slug: string): Promise<EventShape | null> => {
+  const url = `${API_URL}/eventos?slug=${encodeURIComponent(slug)}`;
+  const results = await fetchJSON(url);
+  const e = results[0];
+  if (!e) return null;
+  return normalizeEvent(e);
+};
+
+export const getAllEventSlugs = async (): Promise<string[]> => {
+  const events = await fetchJSON(
+    `${API_URL}/eventos?per_page=100&_fields=slug`
+  );
+  return events.map((e: any) => e.slug);
 };

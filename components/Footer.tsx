@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Map from "../components/Map";
+import Wave from "./Wave";
 
 // Constantes
 const CONTACT_INFO = {
@@ -29,20 +30,13 @@ const Footer = () => {
   return (
     <>
       {/* Wave decorativa */}
-      <div className="flex w-full">
-        <Image
-          src="/waveBottom2.png"
-          alt="Decoració ona"
-          width={1920}
-          height={128}
-          className="w-full h-full object-cover"
-          priority
-        />
+      <div>
+        <Wave />
       </div>
 
       <footer>
         {/* Sección principal */}
-        <section className="bg-pink-600 text-white">
+        <section className="bg-secondary text-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-6 py-12">
             <div className="flex flex-col items-center justify-between sm:flex-row py-14 px-6 gap-6 sm:gap-2">
               {/* Logo y descripción */}

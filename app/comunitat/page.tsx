@@ -1,30 +1,32 @@
 import { Calendar, MapPin, Clock } from "lucide-react";
+import { getEvents } from "@/lib/wp";
+import type { EventShape } from "@/types/wordpress";
 
 export const metadata = {
   title: "Comunitat - La Igualitària",
 };
 
-export default function Comunitat() {
-  const events = [
-    {
-      id: 1,
-      title: "Assemblea mensual",
-      date: "26 de maig, 2024",
-      time: "18:00 - 20:00",
-      location: "Local de La Igualitària",
-      description:
-        "Assemblea mensual oberta a totes les persones sòcies per prendre decisions sobre el funcionament de la cooperativa.",
-    },
-    {
-      id: 2,
-      title: "Taller de fermentats",
-      date: "2 de juny, 2024",
-      time: "17:00 - 19:00",
-      location: "Local de La Igualitària",
-      description:
-        "Aprèn a fer kombutxa, quefir i altres fermentats. Places limitades.",
-    },
-  ];
+function formatDate(raw?: string): string {
+  if (!raw) return "";
+  // ACF date picker returns YYYYMMDD
+  const normalized = raw.includes("-") ? raw : `${raw.slice(0, 4)}-${raw.slice(4, 6)}-${raw.slice(6, 8)}`;
+  const d = new Date(normalized + "T00:00:00");
+  if (isNaN(d.getTime())) return raw;
+  return d.toLocaleDateString("ca-ES", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+
+export default async function Comunitat() {
+  let events: EventShape[] = [];
+
+  try {
+    events = await getEvents();
+  } catch {
+    // CPT not yet created in WP — render empty state gracefully
+  }
 
   return (
     <div className="font-poppins">
@@ -56,35 +58,58 @@ export default function Comunitat() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
-            {events.map((event) => (
-              <div
-                key={event.id}
-                className="bg-white rounded-lg shadow-lg overflow-hidden"
-              >
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-primary mb-2">
-                    {event.title}
-                  </h3>
-                  <p className="text-gray-600 mb-6">{event.description}</p>
-                  <div className="space-y-2">
-                    <div className="flex items-center text-sm text-gray-600">
-                      <Calendar className="h-5 w-5 mr-2 text-primary" />
-                      {event.date}
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <Clock className="h-5 w-5 mr-2 text-primary" />
-                      {event.time}
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <MapPin className="h-5 w-5 mr-2 text-primary" />
-                      {event.location}
+          {events.length === 0 ? (
+            <p className="text-center text-gray-500">
+              No hi ha esdeveniments programats de moment.
+            </p>
+          ) : (
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
+              {events.map((event) => {
+                const { fecha_evento, hora_inicio, hora_fin, ubicacion_evento, descripcion_corta } = event.acf;
+                const timeLabel = hora_inicio
+                  ? hora_fin
+                    ? `${hora_inicio} - ${hora_fin}`
+                    : hora_inicio
+                  : null;
+
+                return (
+                  <div
+                    key={event.id}
+                    className="bg-white rounded-lg shadow-lg overflow-hidden"
+                  >
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-primary mb-2">
+                        {event.title}
+                      </h3>
+                      {descripcion_corta && (
+                        <p className="text-gray-600 mb-6">{descripcion_corta}</p>
+                      )}
+                      <div className="space-y-2">
+                        {fecha_evento && (
+                          <div className="flex items-center text-sm text-gray-600">
+                            <Calendar className="h-5 w-5 mr-2 text-primary" />
+                            {formatDate(fecha_evento)}
+                          </div>
+                        )}
+                        {timeLabel && (
+                          <div className="flex items-center text-sm text-gray-600">
+                            <Clock className="h-5 w-5 mr-2 text-primary" />
+                            {timeLabel}
+                          </div>
+                        )}
+                        {ubicacion_evento && (
+                          <div className="flex items-center text-sm text-gray-600">
+                            <MapPin className="h-5 w-5 mr-2 text-primary" />
+                            {ubicacion_evento}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
 
