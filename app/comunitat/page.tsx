@@ -9,7 +9,9 @@ export const metadata = {
 function formatDate(raw?: string): string {
   if (!raw) return "";
   // ACF date picker returns YYYYMMDD
-  const normalized = raw.includes("-") ? raw : `${raw.slice(0, 4)}-${raw.slice(4, 6)}-${raw.slice(6, 8)}`;
+  const normalized = raw.includes("-")
+    ? raw
+    : `${raw.slice(0, 4)}-${raw.slice(4, 6)}-${raw.slice(6, 8)}`;
   const d = new Date(normalized + "T00:00:00");
   if (isNaN(d.getTime())) return raw;
   return d.toLocaleDateString("ca-ES", {
@@ -23,11 +25,9 @@ export default async function Comunitat() {
   let events: EventShape[] = [];
 
   try {
-    events = await getEvents();
-  } catch {
-    // CPT not yet created in WP — render empty state gracefully
-  }
-
+    events = await getEvents(6);
+  } catch {}
+  console.log("Events fetched:", events);
   return (
     <div className="font-poppins">
       {/* Hero */}
@@ -65,7 +65,13 @@ export default async function Comunitat() {
           ) : (
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
               {events.map((event) => {
-                const { fecha_evento, hora_inicio, hora_fin, ubicacion_evento, descripcion_corta } = event.acf;
+                const {
+                  fecha_evento,
+                  hora_inicio,
+                  hora_fin,
+                  ubicacion_evento,
+                  descripcion_corta,
+                } = event.acf;
                 const timeLabel = hora_inicio
                   ? hora_fin
                     ? `${hora_inicio} - ${hora_fin}`
@@ -82,7 +88,9 @@ export default async function Comunitat() {
                         {event.title}
                       </h3>
                       {descripcion_corta && (
-                        <p className="text-gray-600 mb-6">{descripcion_corta}</p>
+                        <p className="text-gray-600 mb-6">
+                          {descripcion_corta}
+                        </p>
                       )}
                       <div className="space-y-2">
                         {fecha_evento && (

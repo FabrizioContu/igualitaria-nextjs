@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getPageBySlug } from "@/lib/wp";
+import Image from "next/image";
 
 export const metadata = {
   title: "Qui Som - La Igualitària",
@@ -90,7 +91,13 @@ export default async function QuiSom() {
           </div>
           <div className="mt-10 lg:mt-0">
             <div className="rounded-xl shadow-lg w-full h-96 bg-gray-200 flex items-center justify-center">
-              <p className="text-gray-500">Imatge aquí</p>
+              <div className="text-gray-500">
+                <Image
+                  src="/heroImage3.png"
+                  alt="logo La Igualitària"
+                  className="rounded-lg"
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -156,7 +156,7 @@ function normalizeEvent(e: any): EventShape {
 }
 
 export const getEvents = async (perPage = 100): Promise<EventShape[]> => {
-  const url = `${API_URL}/eventos?per_page=${perPage}&orderby=meta_value&meta_key=data_event&order=asc`;
+  const url = `${API_URL}/eventos?per_page=${perPage}&_embed`;
   const results = await fetchJSON(url);
   return (results as any[]).map(normalizeEvent);
 };
