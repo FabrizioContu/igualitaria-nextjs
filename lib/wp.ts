@@ -158,7 +158,21 @@ function normalizeEvent(e: any): EventShape {
 export const getEvents = async (perPage = 100): Promise<EventShape[]> => {
   const url = `${API_URL}/eventos?per_page=${perPage}&_embed`;
   const results = await fetchJSON(url);
-  return (results as any[]).map(normalizeEvent);
+  const events = (results as any[]).map(normalizeEvent);
+
+  const parseAcfDate = (raw: string) => {
+    const normalized = raw.includes('-')
+      ? raw
+      : `${raw.slice(0, 4)}-${raw.slice(4, 6)}-${raw.slice(6, 8)}`;
+    return new Date(normalized + 'T00:00:00').getTime();
+  };
+
+  const now = Date.now();
+  return events.sort((a, b) => {
+    const dateA = a.acf.fecha_evento ? parseAcfDate(a.acf.fecha_evento) : Infinity;
+    const dateB = b.acf.fecha_evento ? parseAcfDate(b.acf.fecha_evento) : Infinity;
+    return Math.abs(dateA - now) - Math.abs(dateB - now);
+  });
 };
 
 export const getEventBySlug = async (slug: string): Promise<EventShape | null> => {

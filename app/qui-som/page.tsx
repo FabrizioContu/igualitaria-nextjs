@@ -80,7 +80,7 @@ export default async function QuiSom() {
               autogestionada i participativa que ofereix productes de
               proximitat, de temporada i agroecològics al veïnat del Poble-sec.
             </p>
-            <div className="mt-8">
+            <div className="my-8">
               <Link
                 href="/fer-se-soci"
                 className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition-colors"
@@ -90,10 +90,12 @@ export default async function QuiSom() {
             </div>
           </div>
           <div className="mt-10 lg:mt-0">
-            <div className="rounded-xl shadow-lg w-full h-96 bg-gray-200 flex items-center justify-center">
+            <div className="rounded-xl w-full h-96 flex items-center justify-center">
               <div className="text-gray-500">
                 <Image
                   src="/heroImage3.png"
+                  width={800}
+                  height={600}
                   alt="logo La Igualitària"
                   className="rounded-lg"
                 />
