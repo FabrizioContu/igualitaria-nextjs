@@ -81,17 +81,17 @@ export default async function Comunitat() {
                 return (
                   <div
                     key={event.id}
-                    className="bg-white rounded-lg shadow-lg overflow-hidden"
+                    className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col"
                   >
-                    <div className="p-6">
+                    <div className="p-6 flex flex-col flex-1">
                       <h3 className="text-xl font-bold text-primary mb-2">
                         {event.title}
                       </h3>
-                      {descripcion_corta && (
-                        <p className="text-gray-600 mb-6">
-                          {descripcion_corta}
-                        </p>
-                      )}
+                      <div className="flex-1 mb-6">
+                        {descripcion_corta && (
+                          <p className="text-gray-600">{descripcion_corta}</p>
+                        )}
+                      </div>
                       <div className="space-y-2">
                         {fecha_evento && (
                           <div className="flex items-center text-sm text-gray-600">

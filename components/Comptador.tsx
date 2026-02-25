@@ -7,7 +7,7 @@ const Comptador = () => {
             {" "}
             <p className=" ">JA SOM</p>
             <p>
-              <span className="py-2 px-3 bg-pink-600 rounded-2xl">199</span>
+              <span className="py-2 px-3 bg-pink-600 rounded-2xl">149</span>
             </p>
             <p className=" ">SÒCIES</p>
           </div>
