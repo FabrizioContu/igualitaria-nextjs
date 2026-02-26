@@ -24,38 +24,38 @@ export default async function Blog() {
         {posts.map((post) => (
           <article
             key={post.id}
-            className="flex flex-col bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+            className="relative flex flex-col bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
           >
-            <Link href={`/blog/${post.slug}`} className="block">
-              <div className="h-48 w-full overflow-hidden bg-gray-100">
-                {post.featuredImage && (
-                  <img
-                    src={post.featuredImage}
-                    alt={post.title}
-                    className="h-full w-full object-cover transition-transform hover:scale-105"
-                  />
-                )}
-              </div>
-            </Link>
+            <div className="h-48 w-full overflow-hidden bg-gray-100" aria-hidden="true">
+              {post.featuredImage && (
+                <img
+                  src={post.featuredImage}
+                  alt=""
+                  className="h-full w-full object-cover transition-transform hover:scale-105"
+                />
+              )}
+            </div>
 
             <div className="p-4 flex-1 flex flex-col">
-              <time className="text-xs text-gray-500">{post.date}</time>
+              <time dateTime={post.datetime} className="text-xs text-gray-500">{post.date}</time>
 
               <h2 className="mt-2 text-lg font-semibold text-gray-900">
-                <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="after:absolute after:inset-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
+                >
+                  {post.title}
+                </Link>
               </h2>
 
               <p className="mt-3 text-sm text-gray-600 line-clamp-3">
                 <span dangerouslySetInnerHTML={{ __html: post.excerpt }} />
               </p>
 
-              <div className="mt-6">
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="text-sm font-medium text-primary hover:underline"
-                >
-                  Llegir més →
-                </Link>
+              <div className="mt-6" aria-hidden="true">
+                <span className="text-sm font-medium text-primary">
+                  Llegir més <span>→</span>
+                </span>
               </div>
             </div>
           </article>

@@ -95,19 +95,19 @@ export default async function Comunitat() {
                       <div className="space-y-2">
                         {fecha_evento && (
                           <div className="flex items-center text-sm text-gray-600">
-                            <Calendar className="h-5 w-5 mr-2 text-primary" />
+                            <Calendar className="h-5 w-5 mr-2 text-primary" aria-hidden="true" />
                             {formatDate(fecha_evento)}
                           </div>
                         )}
                         {timeLabel && (
                           <div className="flex items-center text-sm text-gray-600">
-                            <Clock className="h-5 w-5 mr-2 text-primary" />
+                            <Clock className="h-5 w-5 mr-2 text-primary" aria-hidden="true" />
                             {timeLabel}
                           </div>
                         )}
                         {ubicacion_evento && (
                           <div className="flex items-center text-sm text-gray-600">
-                            <MapPin className="h-5 w-5 mr-2 text-primary" />
+                            <MapPin className="h-5 w-5 mr-2 text-primary" aria-hidden="true" />
                             {ubicacion_evento}
                           </div>
                         )}
@@ -134,7 +134,7 @@ export default async function Comunitat() {
           <div className="mt-8">
             <a
               href="/fer-se-soci"
-              className="inline-flex bg-pink-600 items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white hover:bg-gray-50 transition-colors  hover:text-pink-600 hover:ring-2 hover:ring-pink-600"
+              className="inline-flex bg-pink-600 items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white hover:bg-gray-50 transition-colors hover:text-pink-600 hover:ring-2 hover:ring-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-600"
             >
               Fes-te sòcia
             </a>

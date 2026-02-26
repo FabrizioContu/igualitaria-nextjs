@@ -13,6 +13,7 @@ const Participa = () => {
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"
@@ -34,6 +35,7 @@ const Participa = () => {
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"
@@ -55,6 +57,7 @@ const Participa = () => {
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"
@@ -104,7 +107,7 @@ const Participa = () => {
         <div className="mt-12 text-center">
           <Link
             href="/fer-se-soci"
-            className=" _block inline-flex bg-pink-600 items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white hover:bg-gray-50 transition-colors  hover:text-pink-600 hover:ring-2 hover:ring-pink-600"
+            className="inline-flex bg-pink-600 items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white hover:bg-gray-50 transition-colors hover:text-pink-600 hover:ring-2 hover:ring-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-600"
           >
             Fes-te sòcia
           </Link>

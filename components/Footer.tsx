@@ -62,6 +62,7 @@ const Footer = () => {
                     className="text-white/80 hover:text-white hover:scale-110 transition-colors"
                     aria-label="Telegram"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <svg
                       fill="currentColor"
@@ -113,7 +114,10 @@ const Footer = () => {
               </div>
 
               {/* Mapa */}
-              <section className="rounded-lg overflow-hidden shadow-md h-80 w-80 my-3">
+              <section
+                className="rounded-lg overflow-hidden shadow-md h-80 w-80 my-3"
+                aria-label="Mapa de La Igualitària"
+              >
                 <Map />
               </section>
 
@@ -154,7 +158,7 @@ const Footer = () => {
         <section className="bg-linear-to-t from-pink-800 to-pink-600">
           <div className="py-5 space-y-5">
             <div className="flex justify-center">
-              <Link href="/" aria-label="Som la Clau">
+              <Link href="/" aria-label="Som la Clau - Pàgina d'inici">
                 <Image
                   src="/somLaClau.webp"
                   alt="Logo Som la Clau"
@@ -165,10 +169,10 @@ const Footer = () => {
               </Link>
             </div>
             <div className="flex justify-center px-3">
-              <Link href="/" aria-label="Logos col·laboradors">
+              <Link href="/" aria-label="Entitats col·laboradores - Pàgina d'inici">
                 <Image
                   src="/logos_peu.webp"
-                  alt="Logos col·laboradors"
+                  alt="Logos de les entitats col·laboradores"
                   width={200}
                   height={48}
                   className="h-12 w-auto rounded-lg bg-white p-1"
