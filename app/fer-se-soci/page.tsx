@@ -62,7 +62,7 @@ export default function FesteSoci() {
               </div>
             </div>
             <div className="ml-4">
-              <h3 className="text-lg font-medium text-gray-900">
+              <h3 className="text-lg font-medium text-white">
                 Per minimitzar l’impacte ambiental. Productes ecològics i de
                 proximitat.
               </h3>
@@ -75,7 +75,7 @@ export default function FesteSoci() {
               </div>
             </div>
             <div className="ml-4">
-              <h3 className="text-lg font-medium text-gray-900">
+              <h3 className="text-lg font-medium text-white">
                 Per fer una compra justa per tot el procés productiu. Visca la
                 pagesia!.
               </h3>
@@ -88,7 +88,7 @@ export default function FesteSoci() {
               </div>
             </div>
             <div className="ml-4">
-              <h3 className="text-lg font-medium text-gray-900">
+              <h3 className="text-lg font-medium text-white">
                 Per decidir sobre el funcionament i criteris de la cooperativa.
                 T’esperem a l’assemblea!.
               </h3>
@@ -101,7 +101,7 @@ export default function FesteSoci() {
               </div>
             </div>
             <div className="ml-4">
-              <h3 className="text-lg font-medium text-gray-900">
+              <h3 className="text-lg font-medium text-white">
                 Per ser part del teixit que manté viu el barri del Poble-sec.
               </h3>
             </div>
@@ -110,7 +110,7 @@ export default function FesteSoci() {
         <div className="mt-20 text-center">
           <a
             href="https://usem.liberaforms.org/socialaigualitaria"
-            className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold  rounded-md text-white bg-[#ff9900] hover:bg-[#ff9900] transition-colors"
+            className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-md text-white bg-[#ff9900] hover:bg-[#ff9900] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ff9900]"
             target="_blank"
             rel="noopener noreferrer"
           >

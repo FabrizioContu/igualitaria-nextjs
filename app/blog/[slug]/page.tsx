@@ -41,8 +41,8 @@ export default async function BlogPost({ params }: Props) {
 
   return (
     <main className="mx-auto max-w-7xl px-6 py-16">
-      <Link href="/blog" className="text-sm text-primary mb-4 inline-block">
-        ← Tornar al blog
+      <Link href="/blog" className="text-sm text-primary mb-4 inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded">
+        <span aria-hidden="true">← </span>Tornar al blog
       </Link>
 
       <article>

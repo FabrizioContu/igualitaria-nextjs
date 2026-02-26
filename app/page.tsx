@@ -19,20 +19,10 @@ export default async function Home() {
 
   return (
     <>
-      <div>
-        <HeroSection title={title} content={content} />
-      </div>
-
-      <section>
-        <Comptador />
-      </section>
-
-      <section>
-        <Participa />
-      </section>
-      <section>
-        <BlogSection posts={posts} />
-      </section>
+      <HeroSection title={title} content={content} />
+      <Comptador />
+      <Participa />
+      <BlogSection posts={posts} />
     </>
   );
 }
