@@ -1,9 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import Wave from "./Wave";
-
-const Map = dynamic(() => import("../components/Map"), { ssr: false });
+import FooterMap from "./FooterMap";
 
 // Constantes
 const CONTACT_INFO = {
@@ -118,7 +116,7 @@ const Footer = () => {
                 className="rounded-lg overflow-hidden shadow-md h-80 w-80 my-3"
                 aria-label="Mapa de La Igualitària"
               >
-                <Map />
+                <FooterMap />
               </section>
 
               {/* Información de contacto y horarios */}
