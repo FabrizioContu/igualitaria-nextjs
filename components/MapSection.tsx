@@ -76,11 +76,12 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
         </h2>
       </div>
 
-      {markerData.length === 0 ? (
-        <div className="h-96 bg-gray-100 rounded-lg flex items-center justify-center">
-          <p className="text-gray-500">No hi ha proveïdors per mostrar.</p>
-        </div>
-      ) : (
+      <div className="relative">
+        {markerData.length === 0 && (
+          <div className="absolute inset-0 z-10 bg-gray-100 rounded-lg flex items-center justify-center">
+            <p className="text-gray-500">No hi ha proveïdors per mostrar.</p>
+          </div>
+        )}
         <MapContainer
           center={[41.3743703, 2.1574336]}
           zoom={8}
@@ -98,7 +99,7 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
             attribution="&copy; OpenStreetMap contributors"
           />
 
-          {/* Marker de La Igualitària (una sola vez) */}
+          {/* Marker de La Igualitària */}
           <Marker icon={igualitariaIcon} position={[41.3743703, 2.1574336]}>
             <Popup>
               <p className="font-bold text-primary">La Igualitària</p>
@@ -123,7 +124,7 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
             </Marker>
           ))}
         </MapContainer>
-      )}
+      </div>
     </div>
   );
 };
