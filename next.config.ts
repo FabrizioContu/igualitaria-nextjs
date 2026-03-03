@@ -17,10 +17,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'laigualitaria.coop',
       },
-      // WordPress local (desarrollo)
+      // WordPress en subdominio wp
       {
-        protocol: 'http',
-        hostname: 'laigualitaria.local',
+        protocol: 'https',
+        hostname: 'wp.laigualitaria.coop',
       },
     ],
     // Formatos optimizados
