@@ -1,6 +1,6 @@
 "use client";
 import "leaflet/dist/leaflet.css";
-import { useMemo } from "react";
+import { useMemo, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Circle, Popup } from "react-leaflet";
 import L from "leaflet";
 import type { ProviderShape } from "../types/wordpress";
@@ -14,6 +14,7 @@ const pinIcon = L.icon({
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
 });
+
 const igualitariaIcon = L.icon({
   iconUrl: tiendaIcon.src,
   iconSize: [35, 30],
@@ -37,6 +38,8 @@ interface MapSectionProps {
 
 export const MapSection = ({ providers = [] }: MapSectionProps) => {
   const purpleOptions = { color: "#e50076" };
+  const mapRef = useRef<L.Map | null>(null);
+
   const markerData = useMemo<MarkerData[]>(() => {
     return providers
       .filter((p) => {
@@ -55,6 +58,16 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
       }));
   }, [providers]);
 
+  // Cleanup del mapa cuando se desmonta
+  useEffect(() => {
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+    };
+  }, []);
+
   return (
     <div className="space-y-8">
       <div>
@@ -72,6 +85,7 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
           center={[41.3743703, 2.1574336]}
           zoom={8}
           className="h-96 rounded-lg border border-gray-300 z-0"
+          ref={mapRef}
         >
           <Circle
             center={[41.8743703, 1.9574336]}
@@ -83,28 +97,30 @@ export const MapSection = ({ providers = [] }: MapSectionProps) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; OpenStreetMap contributors"
           />
+
+          {/* Marker de La Igualitària (una sola vez) */}
+          <Marker icon={igualitariaIcon} position={[41.3743703, 2.1574336]}>
+            <Popup>
+              <p className="font-bold text-primary">La Igualitària</p>
+            </Popup>
+          </Marker>
+
+          {/* Markers de proveedores */}
           {markerData.map((marker) => (
-            <>
-              <Marker
-                key={marker.id}
-                icon={pinIcon}
-                position={[marker.lat, marker.lng]}
-              >
-                <Popup>
-                  <Link
-                    href={`/proveidors/${marker.slug}`}
-                    className="text-sm space-y-1"
-                  >
-                    <p className="font-bold text-primary">{marker.title}</p>
-                  </Link>
-                </Popup>
-              </Marker>
-              <Marker icon={igualitariaIcon} position={[41.3743703, 2.1574336]}>
-                <Popup>
-                  <p className="font-bold text-primary">La Igualitaria</p>
-                </Popup>
-              </Marker>
-            </>
+            <Marker
+              key={marker.id}
+              icon={pinIcon}
+              position={[marker.lat, marker.lng]}
+            >
+              <Popup>
+                <Link
+                  href={`/proveidors/${marker.slug}`}
+                  className="text-sm space-y-1"
+                >
+                  <p className="font-bold text-primary">{marker.title}</p>
+                </Link>
+              </Popup>
+            </Marker>
           ))}
         </MapContainer>
       )}
