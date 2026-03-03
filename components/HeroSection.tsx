@@ -32,6 +32,7 @@ export const HeroSection = ({
           width={800}
           height={600}
           className=" lg:w-auto h-full object-cover  rounded-md shadow-lg"
+          sizes="(max-width: 1024px) 100vw, 50vw"
           priority
         />
       </div>

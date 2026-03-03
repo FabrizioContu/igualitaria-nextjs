@@ -1,4 +1,5 @@
 import { PostListItem } from "@/types/wordpress";
+import Image from "next/image";
 import Link from "next/link";
 
 export const BlogSection = ({ posts }: { posts: PostListItem[] }) => {
@@ -21,12 +22,14 @@ export const BlogSection = ({ posts }: { posts: PostListItem[] }) => {
               key={post.id}
               className="flex max-w-xl flex-col items-start justify-between"
             >
-              <div className="w-full overflow-hidden rounded-lg bg-gray-200 h-48">
+              <div className="relative w-full overflow-hidden rounded-lg bg-gray-200 h-48">
                 {post.featuredImage && (
-                  <img
+                  <Image
                     src={post.featuredImage}
                     alt={post.title}
-                    className="h-full w-full object-cover transition-transform hover:scale-105 duration-300"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform hover:scale-105 duration-300"
                   />
                 )}
               </div>

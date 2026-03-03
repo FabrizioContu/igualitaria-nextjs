@@ -1,9 +1,9 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import Map from "../components/Map";
+import dynamic from "next/dynamic";
 import Wave from "./Wave";
+
+const Map = dynamic(() => import("../components/Map"), { ssr: false });
 
 // Constantes
 const CONTACT_INFO = {
