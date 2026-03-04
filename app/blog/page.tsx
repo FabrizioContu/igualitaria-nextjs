@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getLatestPost } from "@/lib/wp";
+import Image from "next/image";
 
 export const metadata = {
   title: "Blog - La Igualitària",
@@ -26,9 +27,12 @@ export default async function Blog() {
             key={post.id}
             className="relative flex flex-col bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
           >
-            <div className="h-48 w-full overflow-hidden bg-gray-100" aria-hidden="true">
+            <div
+              className="h-48 w-full overflow-hidden bg-gray-100"
+              aria-hidden="true"
+            >
               {post.featuredImage && (
-                <img
+                <Image
                   src={post.featuredImage}
                   alt=""
                   className="h-full w-full object-cover transition-transform hover:scale-105"
@@ -37,7 +41,9 @@ export default async function Blog() {
             </div>
 
             <div className="p-4 flex-1 flex flex-col">
-              <time dateTime={post.datetime} className="text-xs text-gray-500">{post.date}</time>
+              <time dateTime={post.datetime} className="text-xs text-gray-500">
+                {post.date}
+              </time>
 
               <h2 className="mt-2 text-lg font-semibold text-gray-900">
                 <Link

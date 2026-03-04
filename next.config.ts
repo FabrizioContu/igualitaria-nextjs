@@ -4,6 +4,11 @@ const nextConfig: NextConfig = {
   // Cache de componentes habilitado
   cacheComponents: true,
 
+  // Tree-shaking per llibreries amb moltes icones/components
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
+  },
+
   // Configuración de imágenes - CRÍTICO para WordPress
   images: {
     remotePatterns: [

@@ -16,7 +16,6 @@ export default function FesteSoci() {
                 alt="imatge de la botiga"
                 width={800}
                 height={300}
-                priority
                 className="mx-auto"
               />
             </div>

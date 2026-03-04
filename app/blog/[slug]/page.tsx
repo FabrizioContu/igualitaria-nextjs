@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/wp";
+import Image from "next/image";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -41,7 +42,10 @@ export default async function BlogPost({ params }: Props) {
 
   return (
     <main className="mx-auto max-w-7xl px-6 py-16">
-      <Link href="/blog" className="text-sm text-primary mb-4 inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded">
+      <Link
+        href="/blog"
+        className="text-sm text-primary mb-4 inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
+      >
         <span aria-hidden="true">← </span>Tornar al blog
       </Link>
 
@@ -56,7 +60,7 @@ export default async function BlogPost({ params }: Props) {
         </time>
 
         {post.featuredImage && (
-          <img
+          <Image
             src={post.featuredImage}
             alt={post.featuredAlt ?? post.title}
             className="mt-6 w-full max-h-96 object-cover rounded"
