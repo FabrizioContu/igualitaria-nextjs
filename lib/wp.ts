@@ -1,5 +1,6 @@
 'use cache'
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { cache } from 'react';
 import type { PostListItem, PostDetail, ProviderShape, EventShape } from '@/types/wordpress';
 
 const domain = process.env.NEXT_PUBLIC_WP_DOMAIN ?? '';
@@ -74,7 +75,7 @@ export const getLatestPost = async ({
   });
 };
 
-export const getPostBySlug = async (slug: string): Promise<PostDetail | null> => {
+export const getPostBySlug = cache(async (slug: string): Promise<PostDetail | null> => {
   const results = await fetchJSON(
     `${API_URL}/posts?slug=${encodeURIComponent(slug)}&_embed`
   );
@@ -95,7 +96,7 @@ export const getPostBySlug = async (slug: string): Promise<PostDetail | null> =>
     featuredImage,
     featuredAlt,
   };
-};
+});
 
 // Helper para generateStaticParams
 export const getAllPostSlugs = async (): Promise<string[]> => {
@@ -129,13 +130,13 @@ export const getProviders = async (perPage = 100): Promise<ProviderShape[]> => {
   return (results as any[]).map(normalizeProvider);
 };
 
-export const getProviderBySlug = async (slug: string): Promise<ProviderShape | null> => {
+export const getProviderBySlug = cache(async (slug: string): Promise<ProviderShape | null> => {
   const url = `${API_URL}/proveedores?slug=${encodeURIComponent(slug)}&_embed`;
   const results = await fetchJSON(url);
   const p = results[0];
   if (!p) return null;
   return normalizeProvider(p);
-};
+});
 
 export const getAllProviderSlugs = async (): Promise<string[]> => {
   const providers = await fetchJSON(

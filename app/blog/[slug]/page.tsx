@@ -63,6 +63,8 @@ export default async function BlogPost({ params }: Props) {
           <Image
             src={post.featuredImage}
             alt={post.featuredAlt ?? post.title}
+            width={1200}
+            height={384}
             className="mt-6 w-full max-h-96 object-cover rounded"
           />
         )}

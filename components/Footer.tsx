@@ -80,6 +80,7 @@ const Footer = () => {
                     className="text-white/80 hover:text-white  hover:scale-110  transition-colors"
                     aria-label="Instagram"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <svg
                       className="h-6 w-6"
@@ -180,7 +181,6 @@ const Footer = () => {
             <div className="mx-auto pt-3">
               <p
                 className="text-base text-white/85 text-center"
-                suppressHydrationWarning
               >
                 &copy; 2026 La Igualitària. Tots els drets reservats.
               </p>

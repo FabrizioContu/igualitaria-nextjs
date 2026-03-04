@@ -4,7 +4,10 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "La Igualitària - Economat Cooperatiu del Poble-sec",
+  title: {
+    default: "La Igualitària - Economat Cooperatiu del Poble-sec",
+    template: "%s | La Igualitària",
+  },
   description:
     "Cooperativa de consum autogestionada i participativa que ofereix productes de proximitat, de temporada i agroecològics al veïnat del Poble-sec.",
   keywords: [

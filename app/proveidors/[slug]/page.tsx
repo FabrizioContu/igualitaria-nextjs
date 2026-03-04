@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getProviderBySlug, getAllProviderSlugs } from "@/lib/wp";
 
@@ -92,9 +93,11 @@ export default async function Proveidor({ params }: Props) {
 
         {/* Imagen destacada */}
         {provider.featuredImage && (
-          <img
+          <Image
             src={provider.featuredImage}
             alt={provider.featuredAlt ?? provider.title}
+            width={1200}
+            height={384}
             className="mt-6 w-full max-h-96 object-cover rounded-lg shadow-lg"
           />
         )}

@@ -28,14 +28,16 @@ export default async function Blog() {
             className="relative flex flex-col bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
           >
             <div
-              className="h-48 w-full overflow-hidden bg-gray-100"
+              className="relative h-48 w-full overflow-hidden bg-gray-100"
               aria-hidden="true"
             >
               {post.featuredImage && (
                 <Image
                   src={post.featuredImage}
                   alt=""
-                  className="h-full w-full object-cover transition-transform hover:scale-105"
+                  fill
+                  className="object-cover transition-transform hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               )}
             </div>
