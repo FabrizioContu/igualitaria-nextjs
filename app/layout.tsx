@@ -4,6 +4,9 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://laigualitaria.coop"
+  ),
   title: {
     default: "La Igualitària - Economat Cooperatiu del Poble-sec",
     template: "%s | La Igualitària",
@@ -12,12 +15,40 @@ export const metadata: Metadata = {
     "Cooperativa de consum autogestionada i participativa que ofereix productes de proximitat, de temporada i agroecològics al veïnat del Poble-sec.",
   keywords: [
     "cooperativa",
+    "economat cooperatiu",
     "Poble-sec",
     "Barcelona",
-    "alimentació ecològica",
+    "consum responsable",
     "productes locals",
     "economia social",
+    "productes ecològics",
   ],
+  authors: [{ name: "La Igualitària" }],
+  creator: "La Igualitària",
+  publisher: "La Igualitària",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    locale: "ca_ES",
+    siteName: "La Igualitària",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({

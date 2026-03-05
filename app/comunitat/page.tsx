@@ -3,7 +3,15 @@ import { getEvents } from "@/lib/wp";
 import type { EventShape } from "@/types/wordpress";
 
 export const metadata = {
-  title: "Comunitat - La Igualitària",
+  title: "Comunitat",
+  description:
+    "Activitats, esdeveniments i vida comunitària de La Igualitària. Participa i forma part d'una alternativa de consum conscient al Poble-sec.",
+  openGraph: {
+    title: "Comunitat | La Igualitària",
+    description: "Activitats i esdeveniments de La Igualitària.",
+    url: "/comunitat",
+  },
+  alternates: { canonical: "/comunitat" },
 };
 
 function formatDate(raw?: string): string {

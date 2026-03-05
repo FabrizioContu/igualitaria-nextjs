@@ -3,8 +3,16 @@ import { getPageBySlug } from "@/lib/wp";
 import Image from "next/image";
 
 export const metadata = {
-  title: "Qui Som - La Igualitària",
-  description: "Cooperativa de consum del Poble-sec, Barcelona",
+  title: "Qui Som",
+  description:
+    "Coneix La Igualitària: una cooperativa de consum autogestionada nascuda al Poble-sec per transformar el model de consum cap a un de més just i ecològic.",
+  openGraph: {
+    title: "Qui Som | La Igualitària",
+    description:
+      "Cooperativa de consum autogestionada del Poble-sec, Barcelona.",
+    url: "/qui-som",
+  },
+  alternates: { canonical: "/qui-som" },
 };
 
 export default async function QuiSom() {

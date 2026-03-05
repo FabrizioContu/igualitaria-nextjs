@@ -22,9 +22,25 @@ export async function generateMetadata({ params }: Props) {
     return { title: "Proveïdor no trobat" };
   }
 
+  const description = provider.excerpt.replace(/<[^>]*>/g, "").trim().substring(0, 160);
+
   return {
-    title: `${provider.title} - La Igualitària`,
-    description: provider.excerpt.replace(/<[^>]*>/g, "").substring(0, 160),
+    title: provider.title,
+    description,
+    openGraph: {
+      title: provider.title,
+      description,
+      url: `/proveidors/${provider.slug}`,
+      ...(provider.featuredImage && {
+        images: [{ url: provider.featuredImage, alt: provider.featuredAlt ?? provider.title }],
+      }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: provider.title,
+      description,
+    },
+    alternates: { canonical: `/proveidors/${provider.slug}` },
   };
 }
 

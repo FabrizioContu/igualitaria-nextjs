@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/wp";
 import Image from "next/image";
+import { StructuredData } from "@/components/StructuredData";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -26,9 +27,29 @@ export async function generateMetadata({ params }: Props) {
     };
   }
 
+  const description = post.excerpt.replace(/<[^>]*>/g, "").trim().substring(0, 160);
+
   return {
-    title: `${post.title} - La Igualitària`,
-    description: post.excerpt.replace(/<[^>]*>/g, "").substring(0, 160),
+    title: post.title,
+    description,
+    openGraph: {
+      title: post.title,
+      description,
+      url: `/blog/${post.slug}`,
+      type: "article",
+      publishedTime: post.date,
+      authors: ["La Igualitària"],
+      ...(post.featuredImage && {
+        images: [{ url: post.featuredImage, width: 1200, height: 630, alt: post.featuredAlt ?? post.title }],
+      }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description,
+      ...(post.featuredImage && { images: [post.featuredImage] }),
+    },
+    alternates: { canonical: `/blog/${post.slug}` },
   };
 }
 
@@ -40,8 +61,28 @@ export default async function BlogPost({ params }: Props) {
     notFound();
   }
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt.replace(/<[^>]*>/g, "").trim().substring(0, 160),
+    ...(post.featuredImage && { image: post.featuredImage }),
+    datePublished: post.date,
+    author: { "@type": "Organization", name: "La Igualitària" },
+    publisher: {
+      "@type": "Organization",
+      name: "La Igualitària",
+      logo: { "@type": "ImageObject", url: "https://laigualitaria.coop/logoCircle.webp" },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://laigualitaria.coop/blog/${post.slug}`,
+    },
+  };
+
   return (
     <main className="mx-auto max-w-7xl px-6 py-16">
+      <StructuredData data={articleSchema} />
       <Link
         href="/blog"
         className="text-sm text-primary mb-4 inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"

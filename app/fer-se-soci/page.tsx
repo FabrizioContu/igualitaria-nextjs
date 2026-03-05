@@ -1,7 +1,16 @@
 import Image from "next/image";
 
 export const metadata = {
-  title: "Fes-te Sòcia - La Igualitària",
+  title: "Fes-te Sòcia",
+  description:
+    "Suma't a La Igualitària! Fes-te sòcia de l'economat cooperatiu del Poble-sec i gaudeix d'un 15% de descompte en productes locals i ecològics.",
+  openGraph: {
+    title: "Fes-te Sòcia | La Igualitària",
+    description:
+      "Suma't a La Igualitària i gaudeix d'un 15% de descompte en productes locals i ecològics.",
+    url: "/fer-se-soci",
+  },
+  alternates: { canonical: "/fer-se-soci" },
 };
 
 export default function FesteSoci() {

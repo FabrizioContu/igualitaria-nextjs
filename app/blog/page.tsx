@@ -3,8 +3,15 @@ import { getLatestPost } from "@/lib/wp";
 import Image from "next/image";
 
 export const metadata = {
-  title: "Blog - La Igualitària",
-  description: "Totes les notícies i entrades de la cooperativa",
+  title: "Blog",
+  description:
+    "Notícies, articles i novetats de La Igualitària. Economia social, consum responsable i vida cooperativa.",
+  openGraph: {
+    title: "Blog | La Igualitària",
+    description: "Notícies i articles de La Igualitària.",
+    url: "/blog",
+  },
+  alternates: { canonical: "/blog" },
 };
 
 export default async function Blog() {
