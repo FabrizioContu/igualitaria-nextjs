@@ -25,6 +25,18 @@ export default async function Home() {
     getPageBySlug("la-igualitaria"),
   ]);
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "La Igualitària",
+    url: "https://laigualitaria.coop",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: { "@type": "EntryPoint", urlTemplate: "https://laigualitaria.coop/blog?q={search_term_string}" },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -76,6 +88,7 @@ export default async function Home() {
 
   return (
     <>
+      <StructuredData data={websiteSchema} />
       <StructuredData data={organizationSchema} />
       <HeroSection title={title} content={content} />
       <Comptador />

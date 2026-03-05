@@ -80,9 +80,20 @@ export default async function BlogPost({ params }: Props) {
     },
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inici", item: "https://laigualitaria.coop" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://laigualitaria.coop/blog" },
+      { "@type": "ListItem", position: 3, name: post.title, item: `https://laigualitaria.coop/blog/${post.slug}` },
+    ],
+  };
+
   return (
     <main className="mx-auto max-w-7xl px-6 py-16">
       <StructuredData data={articleSchema} />
+      <StructuredData data={breadcrumbSchema} />
       <Link
         href="/blog"
         className="text-sm text-primary mb-4 inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"

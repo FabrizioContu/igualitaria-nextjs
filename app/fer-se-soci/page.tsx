@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { StructuredData } from "@/components/StructuredData";
 
 export const metadata = {
   title: "Fes-te Sòcia",
@@ -13,9 +14,41 @@ export const metadata = {
   alternates: { canonical: "/fer-se-soci" },
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Per què fer-me sòcia de La Igualitària?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Per tenir un 15% de descompte en la compra de productes, minimitzar l'impacte ambiental amb productes ecològics i de proximitat, fer una compra justa per tot el procés productiu, decidir sobre el funcionament de la cooperativa i ser part del teixit que manté viu el barri del Poble-sec.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Quant costa fer-se sòcia de La Igualitària?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Cal fer una aportació inicial de capital social de 50 € (retornable en el moment de donar-se de baixa) i el pagament trimestral d'una quota de 20 €.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Quin descompte tenen les sòcies?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Les sòcies tenen un 15% de descompte en tot el producte de La Igualitària.",
+      },
+    },
+  ],
+};
+
 export default function FesteSoci() {
   return (
     <div className="font-family-cocotte bg-primary">
+      <StructuredData data={faqSchema} />
       <div className="mt-16 pb-16 rounded-lg mx-auto max-w-4xl">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white">

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getProviderBySlug, getAllProviderSlugs } from "@/lib/wp";
+import { StructuredData } from "@/components/StructuredData";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -58,8 +59,19 @@ export default async function Proveidor({ params }: Props) {
   const telefono = provider?.acf?.telefono ?? "";
   const descripcion = provider?.acf?.descripcion ?? provider.content;
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inici", item: "https://laigualitaria.coop" },
+      { "@type": "ListItem", position: 2, name: "Proveïdors", item: "https://laigualitaria.coop/proveidors" },
+      { "@type": "ListItem", position: 3, name: provider.title, item: `https://laigualitaria.coop/proveidors/${provider.slug}` },
+    ],
+  };
+
   return (
     <main className="mx-auto max-w-7xl px-6 py-16">
+      <StructuredData data={breadcrumbSchema} />
       <Link
         href="/proveidors"
         className="text-sm text-primary mb-4 inline-block"
