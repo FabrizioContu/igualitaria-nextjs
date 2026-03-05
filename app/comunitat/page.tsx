@@ -1,6 +1,7 @@
 import { Calendar, MapPin, Clock } from "lucide-react";
-import { getEvents } from "@/lib/wp";
+import { getEvents, getComunitatGallery } from "@/lib/wp";
 import type { EventShape } from "@/types/wordpress";
+import { PhotoGallery } from "@/components/PhotoGallery";
 
 export const metadata = {
   title: "Comunitat",
@@ -35,6 +36,8 @@ export default async function Comunitat() {
   try {
     events = await getEvents(6);
   } catch {}
+
+  const gallery = await getComunitatGallery().catch(() => []);
   return (
     <div className="font-poppins">
       {/* Hero */}
@@ -127,6 +130,9 @@ export default async function Comunitat() {
           )}
         </div>
       </div>
+
+      {/* Photo Gallery */}
+      <PhotoGallery images={gallery} />
 
       {/* CTA */}
       <div className="bg-primary-light py-16">

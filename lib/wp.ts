@@ -1,7 +1,7 @@
 'use cache'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { cache } from 'react';
-import type { PostListItem, PostDetail, ProviderShape, EventShape } from '@/types/wordpress';
+import type { PostListItem, PostDetail, ProviderShape, EventShape, GalleryImage } from '@/types/wordpress';
 
 const domain = process.env.NEXT_PUBLIC_WP_DOMAIN ?? '';
 if (!domain) throw new Error('NEXT_PUBLIC_WP_DOMAIN no definida en .env.local');
@@ -190,3 +190,46 @@ export const getAllEventSlugs = async (): Promise<string[]> => {
   );
   return events.map((e: any) => e.slug);
 };
+
+
+// Comunitat gallery (5 ACF Image fields on the "comunitat" page)
+export const getComunitatGallery = cache(async (): Promise<GalleryImage[]> => {
+  const data = await fetchJSON(`${API_URL}/pages?slug=comunitat`);
+  const page = data[0];
+  if (!page) return [];
+
+  const acf = page.acf ?? {};
+  const ids: number[] = [];
+
+  for (let i = 1; i <= 5; i++) {
+    const val = acf[`galeria_${i}`];
+    if (!val) continue;
+    // ACF REST API may return full object or just the ID
+    if (typeof val === 'object' && val.url) {
+      // Already a full image object
+      ids.push(val.ID ?? val.id);
+    } else if (typeof val === 'number') {
+      ids.push(val);
+    }
+  }
+
+  if (ids.length === 0) return [];
+
+  // Fetch media objects in parallel
+  const mediaResults = await Promise.all(
+    ids.map((id) =>
+      fetchJSON(`${API_URL}/media/${id}`).catch(() => null)
+    )
+  );
+
+  return mediaResults
+    .filter(Boolean)
+    .map((media: any) => ({
+      id: media.id,
+      url: media.source_url,
+      alt: media.alt_text ?? media.title?.rendered ?? '',
+      width: media.media_details?.width ?? 1200,
+      height: media.media_details?.height ?? 800,
+    }))
+    .filter((img) => img.url);
+});

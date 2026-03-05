@@ -57,6 +57,14 @@ export type EventShape = {
   };
 };
 
+export type GalleryImage = {
+  id: number;
+  url: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
 export type ProviderShape = {
   id: number;
   slug: string;
