@@ -6,7 +6,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { BlogSection } from "@/components/BlogSection";
 
 export const metadata = {
-  title: "Inici",
+  title: "Inici | La Igualitària",
   description:
     "Benvinguts a La Igualitària, economat cooperatiu autogestionat del Poble-sec. Productes locals, ecològics i de temporada.",
   openGraph: {
@@ -32,7 +32,10 @@ export default async function Home() {
     url: "https://laigualitaria.coop",
     potentialAction: {
       "@type": "SearchAction",
-      target: { "@type": "EntryPoint", urlTemplate: "https://laigualitaria.coop/blog?q={search_term_string}" },
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://laigualitaria.coop/blog?q={search_term_string}",
+      },
       "query-input": "required name=search_term_string",
     },
   };
