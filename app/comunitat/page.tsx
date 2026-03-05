@@ -35,7 +35,6 @@ export default async function Comunitat() {
   try {
     events = await getEvents(6);
   } catch {}
-  console.log("Events fetched:", events);
   return (
     <div className="font-poppins">
       {/* Hero */}
