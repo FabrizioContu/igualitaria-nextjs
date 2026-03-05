@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Search } from "lucide-react";
 import type { ProviderShape } from "@/types/wordpress";
@@ -22,6 +22,25 @@ export default function ProveidorsClient({
 }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState("all");
+  const [mapMounted, setMapMounted] = useState(false);
+  const mapContainerRef = useRef<HTMLDivElement>(null);
+
+  // Load Leaflet only when the map section enters the viewport
+  useEffect(() => {
+    const el = mapContainerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setMapMounted(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const categories = useMemo(() => {
     const map = new Map<string, string>();
@@ -184,12 +203,17 @@ export default function ProveidorsClient({
         )}
       </div>
 
-      {/* Map */}
+      {/* Map — loaded only when visible */}
       <section
+        ref={mapContainerRef}
         className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16"
         aria-label="Mapa de proveïdors"
       >
-        <MapSection providers={filteredProviders} />
+        {mapMounted ? (
+          <MapSection providers={filteredProviders} />
+        ) : (
+          <div className="h-96 bg-gray-100 rounded-lg animate-pulse" />
+        )}
       </section>
 
       {/* CTA */}
