@@ -45,9 +45,7 @@ export const BlogSection = ({ posts }: { posts: PostListItem[] }) => {
                   <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-primary transition-colors">
                     {post.title}
                   </h3>
-                  <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
-                    <span dangerouslySetInnerHTML={{ __html: post.excerpt }} />
-                  </p>
+                  <div className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600" dangerouslySetInnerHTML={{ __html: post.excerpt }} />
                 </div>
               </Link>
             </article>

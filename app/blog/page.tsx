@@ -63,9 +63,7 @@ export default async function Blog() {
                 </Link>
               </h2>
 
-              <p className="mt-3 text-sm text-gray-600 line-clamp-3">
-                <span dangerouslySetInnerHTML={{ __html: post.excerpt }} />
-              </p>
+              <div className="mt-3 text-sm text-gray-600 line-clamp-3" dangerouslySetInnerHTML={{ __html: post.excerpt }} />
 
               <div className="mt-6" aria-hidden="true">
                 <span className="text-sm font-medium text-primary">
