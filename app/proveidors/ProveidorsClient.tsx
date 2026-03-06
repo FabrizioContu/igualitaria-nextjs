@@ -188,9 +188,7 @@ export default function ProveidorsClient({
                         )}
                       </div>
 
-                      <p className="text-gray-600 text-sm line-clamp-3 mb-4">
-                        <span dangerouslySetInnerHTML={{ __html: excerpt ?? "" }} />
-                      </p>
+                      <div className="text-gray-600 text-sm line-clamp-3 mb-4" dangerouslySetInnerHTML={{ __html: excerpt ?? "" }} />
 
                       <div className="text-primary font-medium group-hover:underline">
                         Més informació →
