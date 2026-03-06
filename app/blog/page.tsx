@@ -18,7 +18,7 @@ export default async function Blog() {
   const posts = await getLatestPost({ perPage: 100 });
 
   return (
-    <main className="mx-auto max-w-7xl px-6 py-16">
+    <div className="mx-auto max-w-7xl px-6 py-16">
       <header className="max-w-2xl">
         <h1 className="text-3xl font-bold tracking-tight text-gray-900">
           Blog
@@ -76,6 +76,6 @@ export default async function Blog() {
           </article>
         ))}
       </section>
-    </main>
+    </div>
   );
 }

@@ -29,12 +29,12 @@ export function PhotoGallery({ images }: { images: GalleryImage[] }) {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (activeIndex === null) return;
-      if (e.key === "ArrowLeft") prev();
-      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") setActiveIndex((i) => (i !== null ? (i - 1 + images.length) % images.length : 0));
+      if (e.key === "ArrowRight") setActiveIndex((i) => (i !== null ? (i + 1) % images.length : 0));
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [activeIndex]);
+  }, [activeIndex, images.length]);
 
   // Close on backdrop click
   const onDialogClick = (e: React.MouseEvent<HTMLDialogElement>) => {

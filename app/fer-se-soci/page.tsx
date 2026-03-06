@@ -151,7 +151,7 @@ export default function FesteSoci() {
         <div className="mt-20 text-center">
           <a
             href="https://usem.liberaforms.org/socialaigualitaria"
-            className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-md text-white bg-[#ff9900] hover:bg-[#ff9900] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ff9900]"
+            className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-md text-white bg-[#ff9900] hover:bg-[#e68800] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ff9900]"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -163,6 +163,7 @@ export default function FesteSoci() {
               alt="imagen fruta"
               width={400}
               height={300}
+              loading="lazy"
             />
           </div>
         </div>

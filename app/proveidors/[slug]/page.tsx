@@ -70,7 +70,7 @@ export default async function Proveidor({ params }: Props) {
   };
 
   return (
-    <main className="mx-auto max-w-7xl px-6 py-16">
+    <div className="mx-auto max-w-7xl px-6 py-16">
       <StructuredData data={breadcrumbSchema} />
       <Link
         href="/proveidors"
@@ -127,6 +127,7 @@ export default async function Proveidor({ params }: Props) {
             width={1200}
             height={384}
             className="mt-6 w-full max-h-96 object-cover rounded-lg shadow-lg"
+            priority
           />
         )}
 
@@ -136,6 +137,6 @@ export default async function Proveidor({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: descripcion }}
         />
       </article>
-    </main>
+    </div>
   );
 }

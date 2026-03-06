@@ -61,7 +61,7 @@ export default async function QuiSom() {
               className="text-4xl font-bold text-gray-900 sm:text-5xl"
               dangerouslySetInnerHTML={{ __html: title }}
             />
-            <h2
+            <div
               className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto"
               dangerouslySetInnerHTML={{ __html: content }}
             />
@@ -122,6 +122,7 @@ export default async function QuiSom() {
                   fill
                   className="object-cover"
                   alt="La Igualitària, cooperativa de consum del Poble-sec"
+                  priority
                 />
               </div>
               {/* Two smaller images side by side */}
@@ -132,6 +133,7 @@ export default async function QuiSom() {
                     fill
                     className="object-cover"
                     alt="Espai de La Igualitària"
+                    loading="lazy"
                   />
                 </div>
                 <div className="relative aspect-square overflow-hidden rounded-xl shadow-md">
@@ -140,6 +142,7 @@ export default async function QuiSom() {
                     fill
                     className="object-cover"
                     alt="Productes de La Igualitària"
+                    loading="lazy"
                   />
                 </div>
               </div>

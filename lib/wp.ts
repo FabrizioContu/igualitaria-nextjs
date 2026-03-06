@@ -10,7 +10,7 @@ const API_URL = `${domain.replace(/\/$/, '')}/wp-json/wp/v2`;
 // Helper fetch con caché de Next.js
 async function fetchJSON(url: string, options?: RequestInit) {
   const res = await fetch(url, {
-    next: { revalidate: 60 },
+    next: { revalidate: 3600 },
     ...options,
   });
   if (!res.ok) throw new Error(`Error fetching ${url}: ${res.status}`);

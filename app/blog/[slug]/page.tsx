@@ -91,7 +91,7 @@ export default async function BlogPost({ params }: Props) {
   };
 
   return (
-    <main className="mx-auto max-w-7xl px-6 py-16">
+    <div className="mx-auto max-w-7xl px-6 py-16">
       <StructuredData data={articleSchema} />
       <StructuredData data={breadcrumbSchema} />
       <Link
@@ -118,6 +118,7 @@ export default async function BlogPost({ params }: Props) {
             width={1200}
             height={384}
             className="mt-6 w-full max-h-96 object-cover rounded"
+            priority
           />
         )}
 
@@ -126,6 +127,6 @@ export default async function BlogPost({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </article>
-    </main>
+    </div>
   );
 }
