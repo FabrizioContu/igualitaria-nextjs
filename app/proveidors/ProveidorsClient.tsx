@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect, useRef, useDeferredValue } from "react";
 import Link from "next/link";
 import { Search } from "lucide-react";
 import type { ProviderShape } from "@/types/wordpress";
@@ -21,6 +21,7 @@ export default function ProveidorsClient({
   providers: ProviderShape[];
 }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const deferredSearch = useDeferredValue(searchTerm);
   const [activeCategory, setActiveCategory] = useState("all");
   const [mapMounted, setMapMounted] = useState(false);
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -62,7 +63,7 @@ export default function ProveidorsClient({
       ]
         .join(" ")
         .toLowerCase()
-        .includes(searchTerm.toLowerCase());
+        .includes(deferredSearch.toLowerCase());
 
       const provTipo = (p.acf?.tipus ?? "").toString();
       const matchesCategory =

@@ -1,7 +1,22 @@
 import type { Metadata } from "next";
+import { Poppins, Glass_Antiqua } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-family-poppins",
+  display: "swap",
+});
+
+const glassAntiqua = Glass_Antiqua({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-family-glass-antigua",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -57,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ca">
+    <html lang="ca" className={`${poppins.variable} ${glassAntiqua.variable}`}>
       <body className="font-poppins">
         <div className="flex flex-col min-h-screen w-full">
           <a
