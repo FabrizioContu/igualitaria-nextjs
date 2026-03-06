@@ -1,15 +1,30 @@
 {
   "version": 1,
   "skills": {
+    "core-web-vitals": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "computedHash": "466ba01941037ddc0b519273035eae1e1f591019bdeb0fd83cd8786c53a07f89"
+    },
     "next-best-practices": {
       "source": "vercel-labs/next-skills",
       "sourceType": "github",
       "computedHash": "c31ddd68ba5798a79a516c619b1e1fc4408cc4876ad600fefa4f5add4425719d"
     },
+    "performance": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "computedHash": "9e0e29b7919bacfd2d0caae0f841fa53ae3d7b7427d27f4fdbacc76643d7d138"
+    },
     "wcag-audit-patterns": {
       "source": "wshobson/agents",
       "sourceType": "github",
       "computedHash": "f7f8b9474ffbcda529173206ff5cd1f813c742186b819d16248f9b4e1dec230a"
+    },
+    "web-quality-audit": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "computedHash": "04aeec0ff9071fc9cfb5b848a25946f8ca8586c842e50da4c1abbba8ceeaec40"
     }
   }
 }
