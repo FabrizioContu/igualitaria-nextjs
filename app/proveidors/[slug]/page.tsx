@@ -23,7 +23,10 @@ export async function generateMetadata({ params }: Props) {
     return { title: "Proveïdor no trobat" };
   }
 
-  const description = provider.excerpt.replace(/<[^>]*>/g, "").trim().substring(0, 160);
+  const description = provider.excerpt
+    .replace(/<[^>]*>/g, "")
+    .trim()
+    .substring(0, 160);
 
   return {
     title: provider.title,
@@ -33,7 +36,12 @@ export async function generateMetadata({ params }: Props) {
       description,
       url: `/proveidors/${provider.slug}`,
       ...(provider.featuredImage && {
-        images: [{ url: provider.featuredImage, alt: provider.featuredAlt ?? provider.title }],
+        images: [
+          {
+            url: provider.featuredImage,
+            alt: provider.featuredAlt ?? provider.title,
+          },
+        ],
       }),
     },
     twitter: {
@@ -63,9 +71,24 @@ export default async function Proveidor({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Inici", item: "https://laigualitaria.coop" },
-      { "@type": "ListItem", position: 2, name: "Proveïdors", item: "https://laigualitaria.coop/proveidors" },
-      { "@type": "ListItem", position: 3, name: provider.title, item: `https://laigualitaria.coop/proveidors/${provider.slug}` },
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inici",
+        item: "https://laigualitaria.coop",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Proveïdors",
+        item: "https://laigualitaria.coop/proveidors",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: provider.title,
+        item: `https://laigualitaria.coop/proveidors/${provider.slug}`,
+      },
     ],
   };
 
@@ -124,9 +147,9 @@ export default async function Proveidor({ params }: Props) {
           <Image
             src={provider.featuredImage}
             alt={provider.featuredAlt ?? provider.title}
-            width={1200}
-            height={384}
-            className="mt-6 w-full max-h-96 object-cover rounded-lg shadow-lg"
+            width={800}
+            height={400}
+            className="mt-6 mx-auto max-h-96 object-cover rounded-lg shadow-lg"
             priority
           />
         )}
