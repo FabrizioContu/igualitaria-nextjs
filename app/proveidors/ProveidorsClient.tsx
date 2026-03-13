@@ -11,8 +11,10 @@ const MapSection = dynamic(
   () => import("@/components/MapSection").then((m) => m.MapSection),
   {
     ssr: false,
-    loading: () => <div className="h-96 bg-gray-100 rounded-lg animate-pulse" />,
-  }
+    loading: () => (
+      <div className="h-96 bg-gray-100 rounded-lg animate-pulse" />
+    ),
+  },
 );
 
 export default function ProveidorsClient({
@@ -37,7 +39,7 @@ export default function ProveidorsClient({
           observer.disconnect();
         }
       },
-      { rootMargin: "300px" }
+      { rootMargin: "300px" },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -71,7 +73,7 @@ export default function ProveidorsClient({
 
       return matchesSearch && matchesCategory;
     });
-  }, [providers, searchTerm, activeCategory]);
+  }, [providers, deferredSearch, activeCategory]);
 
   return (
     <div>
@@ -108,7 +110,11 @@ export default function ProveidorsClient({
             />
           </div>
 
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Filtra per categoria">
+          <div
+            className="flex flex-wrap gap-2"
+            role="group"
+            aria-label="Filtra per categoria"
+          >
             {categories.map((category) => (
               <button
                 key={category.id}
@@ -137,7 +143,8 @@ export default function ProveidorsClient({
         {filteredProviders.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-lg text-gray-600">
-              No s&apos;han trobat proveïdors que coincideixin amb la teva cerca.
+              No s&apos;han trobat proveïdors que coincideixin amb la teva
+              cerca.
             </p>
           </div>
         ) : (
@@ -154,7 +161,7 @@ export default function ProveidorsClient({
                   className="group"
                 >
                   <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div className="relative h-48 overflow-hidden bg-gray-200">
+                    <div className="relative h-60 overflow-hidden bg-gray-200">
                       {provider.featuredImage ? (
                         <Image
                           src={provider.featuredImage}
@@ -189,7 +196,9 @@ export default function ProveidorsClient({
                       </div>
 
                       <p className="text-gray-600 text-sm line-clamp-3 mb-4">
-                        <span dangerouslySetInnerHTML={{ __html: excerpt ?? "" }} />
+                        <span
+                          dangerouslySetInnerHTML={{ __html: excerpt ?? "" }}
+                        />
                       </p>
 
                       <div className="text-primary font-medium group-hover:underline">
