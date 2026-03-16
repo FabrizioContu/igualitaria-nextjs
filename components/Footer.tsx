@@ -155,6 +155,28 @@ const Footer = () => {
 
         {/* Sección inferior con logos */}
         <section className="bg-linear-to-t from-pink-800 to-pink-600">
+          <div className="flex justify-center gap-4 flex-wrap">
+            <Link
+              href="/avis-legal"
+              className="text-xs text-white/80 hover:text-white/90 transition-colors"
+            >
+              Avís Legal
+            </Link>
+            <span className="text-white/30 text-xs">·</span>
+            <Link
+              href="/politica-privacitat"
+              className="text-xs text-white/80 hover:text-white/90 transition-colors"
+            >
+              Política de Privacitat
+            </Link>
+            <span className="text-white/30 text-xs">·</span>
+            <Link
+              href="/politica-cookies"
+              className="text-xs text-white/80 hover:text-white/90 transition-colors"
+            >
+              Política de Cookies
+            </Link>
+          </div>
           <div className="py-5 space-y-5">
             <div className="flex justify-center">
               <Link href="/" aria-label="Som la Clau - Pàgina d'inici">
@@ -168,7 +190,10 @@ const Footer = () => {
               </Link>
             </div>
             <div className="flex justify-center px-3">
-              <Link href="/" aria-label="Entitats col·laboradores - Pàgina d'inici">
+              <Link
+                href="/"
+                aria-label="Entitats col·laboradores - Pàgina d'inici"
+              >
                 <Image
                   src="/logos_peu.webp"
                   alt="Logos de les entitats col·laboradores"
@@ -179,25 +204,11 @@ const Footer = () => {
               </Link>
             </div>
             <div className="mx-auto pt-3">
-              <p
-                className="text-base text-white/85 text-center"
-              >
+              <p className="text-base text-white/85 text-center">
                 &copy; 2026 La Igualitària. Tots els drets reservats.
               </p>
             </div>
-            <div className="flex justify-center gap-4 flex-wrap">
-              <Link href="/avis-legal" className="text-xs text-white/60 hover:text-white/90 transition-colors">
-                Avís Legal
-              </Link>
-              <span className="text-white/30 text-xs">·</span>
-              <Link href="/politica-privacitat" className="text-xs text-white/60 hover:text-white/90 transition-colors">
-                Política de Privacitat
-              </Link>
-              <span className="text-white/30 text-xs">·</span>
-              <Link href="/politica-cookies" className="text-xs text-white/60 hover:text-white/90 transition-colors">
-                Política de Cookies
-              </Link>
-            </div>
+
             <div className="mx-auto pt-1">
               <p className="text-sm text-white/80 text-center">
                 Desenvolupat per{" "}
