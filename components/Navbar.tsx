@@ -45,7 +45,7 @@ const Navbar = () => {
 
               <Image
                 src="/laIgualitariaTextBlanc.webp"
-                alt="Logotip de La Igualitària"
+                alt="Logotip de La Igualitària text blanc"
                 width={150}
                 height={48}
                 className="h-12 w-auto"
