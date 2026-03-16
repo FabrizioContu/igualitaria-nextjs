@@ -185,6 +185,19 @@ const Footer = () => {
                 &copy; 2026 La Igualitària. Tots els drets reservats.
               </p>
             </div>
+            <div className="flex justify-center gap-4 flex-wrap">
+              <Link href="/avis-legal" className="text-xs text-white/60 hover:text-white/90 transition-colors">
+                Avís Legal
+              </Link>
+              <span className="text-white/30 text-xs">·</span>
+              <Link href="/politica-privacitat" className="text-xs text-white/60 hover:text-white/90 transition-colors">
+                Política de Privacitat
+              </Link>
+              <span className="text-white/30 text-xs">·</span>
+              <Link href="/politica-cookies" className="text-xs text-white/60 hover:text-white/90 transition-colors">
+                Política de Cookies
+              </Link>
+            </div>
             <div className="mx-auto pt-1">
               <p className="text-sm text-white/80 text-center">
                 Desenvolupat per{" "}
