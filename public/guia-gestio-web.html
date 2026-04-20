@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guia de gestió web — La Igualitària</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 14px;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 40px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* PORTADA */
+    .cover {
+      text-align: center;
+      padding: 60px 20px 40px;
+      border-bottom: 3px solid #2563eb;
+      margin-bottom: 40px;
+    }
+    .cover h1 {
+      font-size: 28px;
+      color: #2563eb;
+      margin-bottom: 8px;
+    }
+    .cover .subtitle {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 24px;
+    }
+    .cover .url-box {
+      display: inline-block;
+      background: #f0f4ff;
+      border: 1px solid #2563eb;
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-size: 15px;
+      color: #2563eb;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    /* SECCIONS */
+    .section {
+      margin-bottom: 36px;
+      page-break-inside: avoid;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #2563eb;
+      color: #fff;
+      border-radius: 8px 8px 0 0;
+      padding: 10px 16px;
+    }
+    .section-header .num {
+      background: #fff;
+      color: #2563eb;
+      font-weight: 700;
+      font-size: 13px;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .section-body {
+      border: 1px solid #dbeafe;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      padding: 16px 20px;
+      background: #f8faff;
+    }
+
+    /* PASOS */
+    ol {
+      padding-left: 20px;
+    }
+    ol li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+    ol li::marker {
+      color: #2563eb;
+      font-weight: 700;
+    }
+
+    /* ETIQUETES */
+    .tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e40af;
+      border-radius: 4px;
+      padding: 1px 7px;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 0 2px;
+    }
+    .tag-pink {
+      background: #fce7f3;
+      color: #9d174d;
+    }
+    .tag-green {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    /* NOTA */
+    .note {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      border-radius: 0 6px 6px 0;
+      padding: 8px 12px;
+      margin-top: 12px;
+      font-size: 13px;
+      color: #78350f;
+    }
+
+    /* TIP */
+    .tip {
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e;
+      border-radius: 0 6px 6px 0;
+      padding: 8px 12px;
+      margin-top: 12px;
+      font-size: 13px;
+      color: #14532d;
+    }
+
+    /* CAMP */
+    .field {
+      display: inline-block;
+      background: #e0e7ff;
+      color: #3730a3;
+      border-radius: 4px;
+      padding: 1px 7px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: monospace;
+    }
+
+    /* PEU */
+    .footer {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid #e5e7eb;
+      text-align: center;
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    @media print {
+      body { padding: 20px; }
+      .section { page-break-inside: avoid; }
+      .cover { page-break-after: always; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PORTADA -->
+  <div class="cover">
+    <h1>Guia de gestió web</h1>
+    <p class="subtitle">La Igualitària — Econoat Cooperatiu del Poble-sec</p>
+    <div class="url-box">wp.laigualitaria.coop/wp-admin</div>
+  </div>
+
+  <!-- 1. NÚMERO DE SÒCIES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="num">1</div>
+      <h2>Actualitzar el nombre de sòcies</h2>
+    </div>
+    <div class="section-body">
+      <p style="margin-bottom:12px">El comptador de la pàgina d'inici s'actualitza des d'aquí.</p>
+      <ol>
+        <li>Ves a <span class="tag">Pàgines</span> al menú esquerre</li>
+        <li>Busca i obre la pàgina <strong>La Igualitaria</strong></li>
+        <li>Baixa fins a la secció <strong>ACF / Camps personalitzats</strong></li>
+        <li>Canvia el valor del camp <span class="field">nombre_socies</span></li>
+        <li>Fes clic a <span class="tag tag-green">Actualitzar</span></li>
+      </ol>
+      <div class="note">⚠️ El canvi es veurà a la web en uns instants gràcies al sistema de revalidació automàtica.</div>
+    </div>
+  </div>
+
+  <!-- 2. CREAR ESDEVENIMENT -->
+  <div class="section">
+    <div class="section-header">
+      <div class="num">2</div>
+      <h2>Crear un nou esdeveniment</h2>
+    </div>
+    <div class="section-body">
+      <ol>
+        <li>Ves a <span class="tag">Esdeveniments</span> al menú esquerre</li>
+        <li>Fes clic a <span class="tag tag-green">Afegir nou</span></li>
+        <li>Escriu el <strong>títol</strong> de l'esdeveniment</li>
+        <li>Omple els camps a la secció <strong>ACF / Camps personalitzats</strong>:
+          <ul style="margin-top:6px; padding-left:16px; list-style:disc">
+            <li style="margin-bottom:4px"><span class="field">fecha_evento</span> — Data (selector de calendari)</li>
+            <li style="margin-bottom:4px"><span class="field">hora_inicio</span> — Hora d'inici (ex: <em>18:00</em>)</li>
+            <li style="margin-bottom:4px"><span class="field">hora_fin</span> — Hora de fi (ex: <em>20:00</em>)</li>
+            <li style="margin-bottom:4px"><span class="field">ubicacion_evento</span> — Lloc (ex: <em>Sala polivalent</em>)</li>
+            <li style="margin-bottom:4px"><span class="field">descripcion_corta</span> — Breu descripció</li>
+          </ul>
+        </li>
+        <li>Fes clic a <span class="tag tag-green">Publicar</span></li>
+      </ol>
+      <div class="tip">✅ Per amagar un esdeveniment sense esborrar-lo: canvia l'estat a <span class="tag">Esborrany</span>.</div>
+    </div>
+  </div>
+
+  <!-- 3. FOTOS D'ESDEVENIMENTS PASSATS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="num">3</div>
+      <h2>Pujar fotos d'esdeveniments passats</h2>
+    </div>
+    <div class="section-body">
+      <p style="margin-bottom:12px">Les fotos apareixeran a la secció <strong>"Esdeveniments passats"</strong> de la pàgina Comunitat.</p>
+      <ol>
+        <li>Ves a <span class="tag">Esdeveniments</span> al menú esquerre</li>
+        <li>Fes clic a <span class="tag tag-green">Afegir nou</span> (o obre una entrada existent)</li>
+        <li>Escriu el <strong>títol</strong> (serà el peu de foto, ex: <em>Taller de iogurt — Març 2026</em>)</li>
+        <li>A la secció ACF, puja les imatges als camps:
+          <ul style="margin-top:6px; padding-left:16px; list-style:disc">
+            <li style="margin-bottom:4px"><span class="field">foto_1</span> — Foto principal (obligatòria)</li>
+            <li style="margin-bottom:4px"><span class="field">foto_2</span> — Segona foto (opcional)</li>
+          </ul>
+        </li>
+        <li>Fes clic a <span class="tag tag-green">Publicar</span></li>
+      </ol>
+      <div class="note">⚠️ Si no vols que una entrada surti a la galeria, simplement no afegeixis cap foto o despublica-la.</div>
+    </div>
+  </div>
+
+  <!-- 4. PROVEIDORS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="num">4</div>
+      <h2>Donar d'alta i de baixa proveidors</h2>
+    </div>
+    <div class="section-body">
+      <p style="margin-bottom:10px"><strong>Alta (nou proveïdor):</strong></p>
+      <ol>
+        <li>Ves a <span class="tag">Proveedores</span> al menú esquerre</li>
+        <li>Fes clic a <span class="tag tag-green">Afegir nou</span></li>
+        <li>Escriu el <strong>nom del proveïdor</strong> com a títol</li>
+        <li>Omple els camps ACF: tipus, ubicació, web, email, telèfon, descripció</li>
+        <li>Afegeix la <strong>imatge destacada</strong> (logo o foto)</li>
+        <li>Fes clic a <span class="tag tag-green">Publicar</span></li>
+      </ol>
+      <p style="margin-top:14px; margin-bottom:10px"><strong>Baixa (treure un proveïdor):</strong></p>
+      <ol>
+        <li>Ves a <span class="tag">Proveedores</span></li>
+        <li>Passa el cursor per sobre del proveïdor i fes clic a <span class="tag tag-pink">Papelera</span></li>
+      </ol>
+      <div class="tip">✅ Si vols amagar-lo temporalment sense esborrar-lo: fes clic a <strong>Editar</strong> i canvia l'estat a <span class="tag">Esborrany</span>.</div>
+    </div>
+  </div>
+
+  <!-- 5. CREAR ENTRADES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="num">5</div>
+      <h2>Crear entrades del blog</h2>
+    </div>
+    <div class="section-body">
+      <ol>
+        <li>Ves a <span class="tag">Entradas</span> al menú esquerre</li>
+        <li>Fes clic a <span class="tag tag-green">Afegir nova</span></li>
+        <li>Escriu el <strong>títol</strong> de l'entrada</li>
+        <li>Escriu el contingut al cos del text (editor de blocs)</li>
+        <li>A la dreta, a <strong>Imatge destacada</strong>, puja la foto principal de l'article</li>
+        <li>Fes clic a <span class="tag tag-green">Publicar</span></li>
+      </ol>
+      <div class="tip">✅ Pots programar la publicació: a la secció <strong>Publicar</strong> (dreta), fes clic a la data i tria el dia i hora que vulguis.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    La Igualitària · Econoat Cooperatiu del Poble-sec · wp.laigualitaria.coop/wp-admin
+  </div>
+
+</body>
+</html>
