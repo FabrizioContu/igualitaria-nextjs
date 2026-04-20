@@ -1,7 +1,7 @@
 'use cache'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { cache } from 'react';
-import type { PostListItem, PostDetail, ProviderShape, EventShape, GalleryImage } from '@/types/wordpress';
+import type { PostListItem, PostDetail, ProviderShape, EventShape, GalleryImage, GaleriaEsdeveniment } from '@/types/wordpress';
 
 const domain = process.env.NEXT_PUBLIC_WP_DOMAIN ?? '';
 if (!domain) throw new Error('NEXT_PUBLIC_WP_DOMAIN no definida en .env.local');
@@ -233,3 +233,23 @@ export const getComunitatGallery = cache(async (): Promise<GalleryImage[]> => {
     }))
     .filter((img) => img.url);
 });
+
+
+// Galeria d'esdeveniments passats
+function normalizeImageField(val: unknown): string | null {
+  if (!val) return null;
+  if (typeof val === 'string') return val;
+  if (typeof val === 'object' && val !== null && 'url' in val) return (val as { url: string }).url;
+  return null;
+}
+
+export const getGaleriaEsdeveniments = async (): Promise<GaleriaEsdeveniment[]> => {
+  const url = `${API_URL}/galeria_esdeveniments?per_page=20&_fields=id,title,acf`;
+  const results = await fetchJSON(url, { tags: ['galeria_esdeveniments'] });
+  return (results as any[]).map((item) => ({
+    id: item.id,
+    title: item.title?.rendered ?? '',
+    foto_1: normalizeImageField(item.acf?.foto_1),
+    foto_2: normalizeImageField(item.acf?.foto_2),
+  })).filter((item) => item.foto_1);
+};
