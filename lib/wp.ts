@@ -236,20 +236,25 @@ export const getComunitatGallery = cache(async (): Promise<GalleryImage[]> => {
 
 
 // Galeria d'esdeveniments passats
-function normalizeImageField(val: unknown): string | null {
+async function resolveMediaUrl(val: unknown): Promise<string | null> {
   if (!val) return null;
-  if (typeof val === 'string') return val;
+  if (typeof val === 'string' && val.startsWith('http')) return val;
   if (typeof val === 'object' && val !== null && 'url' in val) return (val as { url: string }).url;
-  return null;
+  const id = typeof val === 'number' ? val : typeof val === 'string' ? parseInt(val, 10) : null;
+  if (!id || isNaN(id)) return null;
+  const media = await fetchJSON(`${API_URL}/media/${id}?_fields=source_url`).catch(() => null);
+  return media?.source_url ?? null;
 }
 
 export const getGaleriaEsdeveniments = async (): Promise<GaleriaEsdeveniment[]> => {
   const url = `${API_URL}/galeria_esdeveniment?per_page=20&_fields=id,title,acf`;
   const results = await fetchJSON(url, { tags: ['galeria_esdeveniment'] });
-  return (results as any[]).map((item) => ({
-    id: item.id,
-    title: item.title?.rendered ?? '',
-    foto_1: normalizeImageField(item.acf?.foto_1),
-    foto_2: normalizeImageField(item.acf?.foto_2),
-  })).filter((item) => item.foto_1);
+  return Promise.all(
+    (results as any[]).map(async (item) => ({
+      id: item.id,
+      title: item.title?.rendered ?? '',
+      foto_1: await resolveMediaUrl(item.acf?.foto_1),
+      foto_2: await resolveMediaUrl(item.acf?.foto_2),
+    }))
+  ).then((items) => items.filter((item) => item.foto_1));
 };
