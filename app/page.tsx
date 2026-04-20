@@ -94,7 +94,7 @@ export default async function Home() {
       <StructuredData data={websiteSchema} />
       <StructuredData data={organizationSchema} />
       <HeroSection title={title} content={content} />
-      <Comptador count={typeof acf.numero_socies === 'number' ? acf.numero_socies : 149} />
+      <Comptador count={typeof acf.nombre_socies === 'number' ? acf.nombre_socies : 149} />
       <Participa />
       <BlogSection posts={posts} />
     </>
