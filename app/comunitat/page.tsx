@@ -105,19 +105,28 @@ export default async function Comunitat() {
                       <div className="space-y-2">
                         {fecha_evento && (
                           <div className="flex items-center text-sm text-gray-600">
-                            <Calendar className="h-5 w-5 mr-2 text-primary" aria-hidden="true" />
+                            <Calendar
+                              className="h-5 w-5 mr-2 text-primary"
+                              aria-hidden="true"
+                            />
                             {formatDate(fecha_evento)}
                           </div>
                         )}
                         {timeLabel && (
                           <div className="flex items-center text-sm text-gray-600">
-                            <Clock className="h-5 w-5 mr-2 text-primary" aria-hidden="true" />
+                            <Clock
+                              className="h-5 w-5 mr-2 text-primary"
+                              aria-hidden="true"
+                            />
                             {timeLabel}
                           </div>
                         )}
                         {ubicacion_evento && (
                           <div className="flex items-center text-sm text-gray-600">
-                            <MapPin className="h-5 w-5 mr-2 text-primary" aria-hidden="true" />
+                            <MapPin
+                              className="h-5 w-5 mr-2 text-primary"
+                              aria-hidden="true"
+                            />
                             {ubicacion_evento}
                           </div>
                         )}

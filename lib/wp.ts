@@ -8,10 +8,11 @@ if (!domain) throw new Error('NEXT_PUBLIC_WP_DOMAIN no definida en .env.local');
 const API_URL = `${domain.replace(/\/$/, '')}/wp-json/wp/v2`;
 
 // Helper fetch con caché de Next.js
-async function fetchJSON(url: string, options?: RequestInit) {
+async function fetchJSON(url: string, options?: RequestInit & { tags?: string[] }) {
+  const { tags, ...rest } = options ?? {};
   const res = await fetch(url, {
-    next: { revalidate: 3600 },
-    ...options,
+    next: { revalidate: 3600, tags },
+    ...rest,
   });
   if (!res.ok) throw new Error(`Error fetching ${url}: ${res.status}`);
   return res.json();
@@ -158,7 +159,7 @@ function normalizeEvent(e: any): EventShape {
 
 export const getEvents = async (perPage = 100): Promise<EventShape[]> => {
   const url = `${API_URL}/eventos?per_page=${perPage}&_embed`;
-  const results = await fetchJSON(url);
+  const results = await fetchJSON(url, { tags: ['eventos'] });
   const events = (results as any[]).map(normalizeEvent);
 
   const parseAcfDate = (raw: string) => {
@@ -178,7 +179,7 @@ export const getEvents = async (perPage = 100): Promise<EventShape[]> => {
 
 export const getEventBySlug = async (slug: string): Promise<EventShape | null> => {
   const url = `${API_URL}/eventos?slug=${encodeURIComponent(slug)}`;
-  const results = await fetchJSON(url);
+  const results = await fetchJSON(url, { tags: ['eventos'] });
   const e = results[0];
   if (!e) return null;
   return normalizeEvent(e);
