@@ -244,8 +244,8 @@ function normalizeImageField(val: unknown): string | null {
 }
 
 export const getGaleriaEsdeveniments = async (): Promise<GaleriaEsdeveniment[]> => {
-  const url = `${API_URL}/galeria_esdeveniments?per_page=20&_fields=id,title,acf`;
-  const results = await fetchJSON(url, { tags: ['galeria_esdeveniments'] });
+  const url = `${API_URL}/galeria_esdeveniment?per_page=20&_fields=id,title,acf`;
+  const results = await fetchJSON(url, { tags: ['galeria_esdeveniment'] });
   return (results as any[]).map((item) => ({
     id: item.id,
     title: item.title?.rendered ?? '',
