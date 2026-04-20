@@ -1,5 +1,5 @@
 import { Calendar, MapPin, Clock } from "lucide-react";
-import { getEvents, getComunitatGallery } from "@/lib/wp";
+import { getEvents, getComunitatGallery, getGaleriaEsdeveniments } from "@/lib/wp";
 import type { EventShape } from "@/types/wordpress";
 import { PhotoGallery } from "@/components/PhotoGallery";
 
@@ -37,7 +37,10 @@ export default async function Comunitat() {
     events = await getEvents(6);
   } catch {}
 
-  const gallery = await getComunitatGallery().catch(() => []);
+  const [gallery, galeriaEsdeveniments] = await Promise.all([
+    getComunitatGallery().catch(() => []),
+    getGaleriaEsdeveniments().catch(() => []),
+  ]);
   return (
     <div className="font-poppins">
       {/* Hero */}
@@ -142,6 +145,42 @@ export default async function Comunitat() {
 
       {/* Photo Gallery */}
       <PhotoGallery images={gallery} />
+
+      {/* Galeria d'esdeveniments passats */}
+      {galeriaEsdeveniments.length > 0 && (
+        <div className="bg-white py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900">
+                Esdeveniments passats
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+              {galeriaEsdeveniments.map((item) => (
+                <div key={item.id} className="flex flex-col gap-3">
+                  <h3 className="text-lg font-semibold text-primary text-center">
+                    {item.title}
+                  </h3>
+                  <div className={`grid gap-2 ${item.foto_2 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                    <img
+                      src={item.foto_1!}
+                      alt={item.title}
+                      className="w-full h-48 object-cover rounded-lg"
+                    />
+                    {item.foto_2 && (
+                      <img
+                        src={item.foto_2}
+                        alt={item.title}
+                        className="w-full h-48 object-cover rounded-lg"
+                      />
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* CTA */}
       <div className="bg-primary-light py-16">

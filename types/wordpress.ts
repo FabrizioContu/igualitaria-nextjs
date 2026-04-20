@@ -65,6 +65,13 @@ export type GalleryImage = {
   height: number;
 };
 
+export type GaleriaEsdeveniment = {
+  id: number;
+  title: string;
+  foto_1: string | null;
+  foto_2: string | null;
+};
+
 export type ProviderShape = {
   id: number;
   slug: string;
