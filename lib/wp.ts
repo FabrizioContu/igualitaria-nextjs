@@ -25,18 +25,17 @@ function extractFeaturedImage(post: any): string | null {
 }
 
 // Pages
-export const getPageBySlug = async (slug: string): Promise<[string, string]> => {
-
-  
+export const getPageBySlug = async (slug: string): Promise<[string, string, Record<string, unknown>]> => {
   const data = await fetchJSON(`${API_URL}/pages?slug=${slug}&_embed`);
   const page = data[0];
   if (!page) throw new Error(`Page ${slug} not found`);
-  
+
   const {
     title: { rendered: title },
     content: { rendered: content },
+    acf = {},
   } = page;
-  return [title, content];
+  return [title, content, acf];
 };
 
 // Posts

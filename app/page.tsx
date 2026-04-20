@@ -20,7 +20,7 @@ export const metadata = {
 
 export default async function Home() {
   // Fetch en paralelo
-  const [posts, [title, content]] = await Promise.all([
+  const [posts, [title, content, acf]] = await Promise.all([
     getLatestPost({ perPage: 3 }),
     getPageBySlug("la-igualitaria"),
   ]);
@@ -94,7 +94,7 @@ export default async function Home() {
       <StructuredData data={websiteSchema} />
       <StructuredData data={organizationSchema} />
       <HeroSection title={title} content={content} />
-      <Comptador />
+      <Comptador count={typeof acf.nombre_socies === 'number' ? acf.nombre_socies : 149} />
       <Participa />
       <BlogSection posts={posts} />
     </>
