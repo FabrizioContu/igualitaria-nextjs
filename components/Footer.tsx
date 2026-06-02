@@ -13,7 +13,7 @@ const CONTACT_INFO = {
 } as const;
 
 const SCHEDULE = [
-  { days: "Dilluns-Divendres", hours: "10:00-14:00 / 16:00-20:30" },
+  { days: "Dilluns-Divendres", hours: "10:30-14:00 / 17:00-20:30" },
   { days: "Dissabte", hours: "10:00-14:00" },
   { days: "Diumenge", hours: "Tancat" },
 ] as const;
