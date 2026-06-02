@@ -7,12 +7,7 @@ Web de La Igualitària, economat cooperatiu situado en el barrio del Poble-sec d
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38bdf8)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-## 🌐 URLs del Proyecto
 
-- **Producción:** https://laigualitaria.coop (próximamente en Vercel)
-- **WordPress Backend:** https://laigualitaria.coop/wp-admin
-- **API REST:** https://laigualitaria.coop/wp-json/wp/v2
-- **Desarrollo Local:** http://localhost:3000
 
 ## 📋 Sobre el Proyecto
 
