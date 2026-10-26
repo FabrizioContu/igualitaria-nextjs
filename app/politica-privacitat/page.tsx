@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Política de Privacitat",
@@ -85,6 +86,16 @@ export default function PoliticaPrivacitat() {
           <p className="mt-2">
             Aquests proveïdors actuen com a encarregats del tractament i estan obligats a mantenir
             la confidencialitat de les dades.
+          </p>
+          <p className="mt-2">
+            Els mapes del web es carreguen des de serveis externs, que reben la teva adreça IP per
+            poder mostrar-los: OpenStreetMap, al mapa de proveïdors, i Google Maps, al peu de pàgina.
+            Google Maps només es carrega si hi dones el consentiment. Pots consultar-ne els detalls a
+            la{" "}
+            <Link href="/politica-cookies" className="underline hover:text-gray-900">
+              Política de Cookies
+            </Link>
+            .
           </p>
         </div>
 

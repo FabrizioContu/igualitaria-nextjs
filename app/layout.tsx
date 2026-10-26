@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Glass_Antiqua } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CookieBanner from "@/components/CookieBanner";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -74,6 +75,8 @@ export default function RootLayout({
   return (
     <html lang="ca" className={`${poppins.variable} ${glassAntiqua.variable}`}>
       <body className="font-poppins">
+        {/* Primero en el DOM (patrón GOV.UK): lo primero que encuentran teclado y lector de pantalla */}
+        <CookieBanner />
         <div className="flex flex-col min-h-screen w-full">
           <a
             href="#main-content"
