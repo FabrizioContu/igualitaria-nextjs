@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Wave from "./Wave";
 import FooterMap from "./FooterMap";
+import CookieSettingsButton from "./CookieSettingsButton";
 
 // Constantes
 const CONTACT_INFO = {
@@ -176,6 +177,8 @@ const Footer = () => {
             >
               Política de Cookies
             </Link>
+            <span className="text-white/30 text-xs">·</span>
+            <CookieSettingsButton className="text-xs text-white/80 hover:text-white/90 transition-colors" />
           </div>
           <div className="py-5 space-y-5">
             <div className="flex justify-center">
